@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: 1Intro
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: self
-  dialogueText: "\u201CDios mio! .... Me quede dormida y ya es tarde\u201D"
+  characterName: Me
+  dialogueText: Dios mio! .... Me quede dormida y ya es tarde
   characterPortrait: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   nextNode: {fileID: 11400000, guid: ade27839a886276418ae72c029a870a1, type: 2}
   choices: []
   dialogueLines: []
-  backgroundImage: {fileID: -3527814807984758470, guid: 25fd2209305b6cd408ec447a124d0ee6, type: 3}
-  dialogueBoxImage: {fileID: -2173566923263989653, guid: fc32ed11f48fe5a4c9ccc428ce9597a7, type: 3}
-  dialogueTextColor: {r: 0, g: 0, b: 0, a: 1}

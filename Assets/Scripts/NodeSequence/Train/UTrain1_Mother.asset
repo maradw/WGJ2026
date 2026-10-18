@@ -13,11 +13,8 @@ MonoBehaviour:
   m_Name: UTrain1_Mother
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   characterName: Madre
-  dialogueText: "\u201CHija, cont\xE9stame urgente\u201D"
+  dialogueText: "Hija, cont\xE9stame urgente!"
   characterPortrait: {fileID: 0}
   nextNode: {fileID: 11400000, guid: 1476e81b3de04d04e8e0040272f89d54, type: 2}
   choices: []
   dialogueLines: []
-  backgroundImage: {fileID: 0}
-  dialogueBoxImage: {fileID: -3798117729592515400, guid: d06dae61b7673094780e5d74960ba13b, type: 3}
-  dialogueTextColor: {r: 1, g: 1, b: 1, a: 1}

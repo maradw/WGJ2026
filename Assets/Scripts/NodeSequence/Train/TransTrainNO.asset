@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: TransTrainNO
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: 
-  dialogueText: "\u201CFelizmente no saque la basura, llegu\xE9 a tiempo\u201D"
+  characterName: Me
+  dialogueText: "Felizmente no saque la basura, llegu\xE9 a tiempo"
   characterPortrait: {fileID: 0}
   nextNode: {fileID: 11400000, guid: 891eba52f772cc14cbcd0e312d1ea853, type: 2}
   choices: []
   dialogueLines: []
-  backgroundImage: {fileID: -4076133315747464974, guid: 15fffc88a1d790d46a6366ab36f5df02, type: 3}
-  dialogueBoxImage: {fileID: 0}
-  dialogueTextColor: {r: 0, g: 0, b: 0, a: 1}

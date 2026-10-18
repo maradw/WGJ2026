@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: ZOfficeOnTime
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: 
-  dialogueText: "\u201CUff justo a tiempo, al menos no me descontar\xE1n hoy\u201D"
+  characterName: Me
+  dialogueText: "Uff justo a tiempo, al menos no me descontar\xE1n hoy"
   characterPortrait: {fileID: 0}
   nextNode: {fileID: 11400000, guid: f98ac35cfadad4949aab7a9332205c25, type: 2}
   choices: []
   dialogueLines: []
-  backgroundImage: {fileID: 0}
-  dialogueBoxImage: {fileID: 0}
-  dialogueTextColor: {r: 0, g: 0, b: 0, a: 1}

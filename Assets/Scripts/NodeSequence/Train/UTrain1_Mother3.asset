@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: UTrain1_Mother3
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   characterName: Madre
-  dialogueText: "Dice que sin eso no puede presentar su tr\xE1mite hoy\u201D"
+  dialogueText: "Dice que sin eso no puede presentar su tr\xE1mite hoy"
   characterPortrait: {fileID: 0}
   nextNode: {fileID: 11400000, guid: 0901eeb796cc2de4a84aa4363c1ec3af, type: 2}
   choices: []
+  dialogueLines: []

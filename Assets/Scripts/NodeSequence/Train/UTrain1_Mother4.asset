@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UTrain1_Mother4
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   characterName: Madre
-  dialogueText: "\u201CPorfa prende tu compu y m\xE1ndaselo ahora mismo\u201D"
+  dialogueText: "Porfa prende tu compu y m\xE1ndaselo ahora mismo"
   characterPortrait: {fileID: 0}
   nextNode: {fileID: 0}
   choices:
@@ -25,6 +25,3 @@ MonoBehaviour:
     nextNode: {fileID: 11400000, guid: 35988d7af1d69f44bad0c83cb228b80d, type: 2}
     miniGameType: 0
   dialogueLines: []
-  backgroundImage: {fileID: 0}
-  dialogueBoxImage: {fileID: -3798117729592515400, guid: d06dae61b7673094780e5d74960ba13b, type: 3}
-  dialogueTextColor: {r: 1, g: 1, b: 1, a: 1}
