@@ -30,3 +30,6 @@ MonoBehaviour:
   - "\u201CEl jefe quiere este reporte listo para antes de las 9PM y me surgi\xF3
     un compromiso personal."
   - "\u201C\xBFMe ayudas?\u201D"
+  backgroundImage: {fileID: 2030455511824657429, guid: 96556df598c40a3419e9c02460cbf668, type: 3}
+  dialogueBoxImage: {fileID: -706684969943626725, guid: 4adf6d2bde2ff4c48a6ae4044d79d1cc, type: 3}
+  dialogueTextColor: {r: 0, g: 0, b: 0, a: 1}

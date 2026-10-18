@@ -17,3 +17,7 @@ MonoBehaviour:
   characterPortrait: {fileID: 0}
   nextNode: {fileID: 11400000, guid: 3b1c3be9f78b98442a6d601aeff7ee8d, type: 2}
   choices: []
+  dialogueLines: []
+  backgroundImage: {fileID: 0}
+  dialogueBoxImage: {fileID: 0}
+  dialogueTextColor: {r: 0, g: 0, b: 0, a: 1}

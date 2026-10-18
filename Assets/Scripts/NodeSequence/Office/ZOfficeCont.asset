@@ -18,3 +18,6 @@ MonoBehaviour:
   nextNode: {fileID: 11400000, guid: 932d3de74b7e6554c8187d0ded744cd2, type: 2}
   choices: []
   dialogueLines: []
+  backgroundImage: {fileID: 0}
+  dialogueBoxImage: {fileID: 0}
+  dialogueTextColor: {r: 0, g: 0, b: 0, a: 1}

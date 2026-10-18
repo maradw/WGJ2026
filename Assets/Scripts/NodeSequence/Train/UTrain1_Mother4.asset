@@ -24,3 +24,7 @@ MonoBehaviour:
       apenas llegue."
     nextNode: {fileID: 11400000, guid: 35988d7af1d69f44bad0c83cb228b80d, type: 2}
     miniGameType: 0
+  dialogueLines: []
+  backgroundImage: {fileID: 0}
+  dialogueBoxImage: {fileID: -3798117729592515400, guid: d06dae61b7673094780e5d74960ba13b, type: 3}
+  dialogueTextColor: {r: 1, g: 1, b: 1, a: 1}

@@ -23,3 +23,7 @@ MonoBehaviour:
   - choiceText: No, la basura puede esperar
     nextNode: {fileID: 11400000, guid: f3188badac8f6ba40b72385c7182d5bd, type: 2}
     miniGameType: 0
+  dialogueLines: []
+  backgroundImage: {fileID: 0}
+  dialogueBoxImage: {fileID: -2173566923263989653, guid: fc32ed11f48fe5a4c9ccc428ce9597a7, type: 3}
+  dialogueTextColor: {r: 0, g: 0, b: 0, a: 1}

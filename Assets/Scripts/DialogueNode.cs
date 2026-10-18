@@ -42,4 +42,8 @@ public class DialogueNode : ScriptableObject
     [Header("Multiple Lines")]
     [TextArea(3, 6)]
     public List<string> dialogueLines = new List<string>();
+    [Header("Visuales")]
+    public Sprite backgroundImage;
+    public Sprite dialogueBoxImage;
+    public Color dialogueTextColor = Color.white;
 }

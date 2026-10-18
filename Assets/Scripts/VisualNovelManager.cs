@@ -38,6 +38,10 @@ public class VisualNovelManager : MonoBehaviour
 
     [SerializeField] MusicData Background;
 
+    [Header("Interfaz visual")]
+    [SerializeField] private Image backgroundImage;
+    [SerializeField] private Image dialogueBoxImage;
+
     private void Start()
     {
        
@@ -215,7 +219,15 @@ public class VisualNovelManager : MonoBehaviour
         characterNameText.text = node.characterName;
         characterPortrait.sprite = node.characterPortrait;
         characterPortrait.enabled = node.characterPortrait != null;
+        if (node.backgroundImage != null)
+        {
+            backgroundImage.sprite = node.backgroundImage;
+        }
 
+        if (node.dialogueBoxImage != null)
+        {
+            dialogueBoxImage.sprite = node.dialogueBoxImage;
+        }
         // Display the current dialogue line
         if (node.dialogueLines.Count > 0)
         {
@@ -228,6 +240,7 @@ public class VisualNovelManager : MonoBehaviour
         {
             dialogueText.text = node.dialogueText;
         }
+        dialogueText.color = node.dialogueTextColor;
 
         backButton.interactable =
             currentIndex > 0 || currentLineIndex > 0;
