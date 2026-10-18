@@ -24,12 +24,14 @@ public class VisualNovelManager : MonoBehaviour
     // Recorrido que ya hizo el jugador.
     private List<DialogueNode> history = new List<DialogueNode>();
     private int currentIndex = 0;
-
+    private int currentLineIndex = 0;
     // Registra la decisión tomada en cada nodo.
     private Dictionary<DialogueNode, DialogueChoice> savedChoices =
         new Dictionary<DialogueNode, DialogueChoice>();
 
     [SerializeField] private MiniGameManager miniGameManager;
+
+    [SerializeField] GameObject DialogueSys;
 
     private void Start()
     {
@@ -70,7 +72,7 @@ public class VisualNovelManager : MonoBehaviour
             Debug.LogWarning("La decisión no tiene Next Node asignado.");
             return;
         }
-
+        currentLineIndex = 0;
         history.Add(choice.nextNode);
         currentIndex++;
 
@@ -78,7 +80,19 @@ public class VisualNovelManager : MonoBehaviour
     }
     public void NextDialogue()
     {
+
+
+
         DialogueNode currentNode = history[currentIndex];
+
+
+
+        if (currentLineIndex < currentNode.dialogueLines.Count - 1)
+        {
+            currentLineIndex++;
+            ShowNode();
+            return;
+        }
 
         // Si ya avanzamos y retrocedimos, reproducir
         // el recorrido guardado, sin crear otra ruta.
@@ -107,6 +121,10 @@ public class VisualNovelManager : MonoBehaviour
         if (targetNode == null)
             return;
 
+        //////
+        ///
+        currentLineIndex = 0;
+
         history.Add(targetNode);
         currentIndex++;
 
@@ -115,10 +133,24 @@ public class VisualNovelManager : MonoBehaviour
 
     public void PreviousDialogue()
     {
+        if (currentLineIndex > 0)
+        {
+            currentLineIndex--;
+            ShowNode();
+            return;
+        }
+
         if (currentIndex <= 0)
             return;
 
         currentIndex--;
+
+        DialogueNode previousNode = history[currentIndex];
+
+        currentLineIndex = previousNode.dialogueLines.Count > 0
+            ? previousNode.dialogueLines.Count - 1
+            : 0;
+
         ShowNode();
     }
 
@@ -149,6 +181,11 @@ public class VisualNovelManager : MonoBehaviour
             miniGameManager.OpenMazeGame();
             return;
         }
+        if(choice.miniGameType == MiniGameType.Code)
+        {
+            miniGameManager.OpenCodeGame();
+            return;
+        }
 
         if (choice.nextNode == null)
         {
@@ -156,8 +193,8 @@ public class VisualNovelManager : MonoBehaviour
             return;
         }
 
-        savedChoices.Add(currentNode, choice);
-
+        //  savedChoices.Add(currentNode, choice);
+        currentLineIndex = 0;
         // Avanzamos inmediatamente por la ruta elegida.
         history.Add(choice.nextNode);
         currentIndex++;
@@ -170,33 +207,37 @@ public class VisualNovelManager : MonoBehaviour
         DialogueNode node = history[currentIndex];
 
         characterNameText.text = node.characterName;
-        dialogueText.text = node.dialogueText;
-
         characterPortrait.sprite = node.characterPortrait;
         characterPortrait.enabled = node.characterPortrait != null;
 
-        backButton.interactable = currentIndex > 0;
-
-        // Ocultar todas las opciones anteriores.
-        for (int i = 0; i < choiceButtons.Count; i++)
+        // Display the current dialogue line
+        if (node.dialogueLines.Count > 0)
         {
-            choiceButtons[i].gameObject.SetActive(false);
+            currentLineIndex = Mathf.Clamp(
+                currentLineIndex, 0, node.dialogueLines.Count - 1);
+
+            dialogueText.text = node.dialogueLines[currentLineIndex];
         }
+        else
+        {
+            dialogueText.text = node.dialogueText;
+        }
+
+        backButton.interactable =
+            currentIndex > 0 || currentLineIndex > 0;
+
+        for (int i = 0; i < choiceButtons.Count; i++)
+            choiceButtons[i].gameObject.SetActive(false);
 
         bool hasChoices = node.choices.Count > 0;
         bool choiceAlreadyMade = savedChoices.ContainsKey(node);
 
-        // Mostrar opciones solo si todavía no se eligió.
         if (hasChoices && !choiceAlreadyMade)
         {
             for (int i = 0; i < node.choices.Count; i++)
             {
                 if (i >= choiceButtons.Count)
-                {
-                    Debug.LogWarning(
-                        "No hay suficientes botones para las opciones.");
                     break;
-                }
 
                 Button button = choiceButtons[i];
                 DialogueChoice choice = node.choices[i];
@@ -212,23 +253,26 @@ public class VisualNovelManager : MonoBehaviour
                 button.onClick.RemoveAllListeners();
 
                 int optionIndex = i;
-
                 button.onClick.AddListener(
                     () => ChooseOption(optionIndex));
             }
         }
 
-        // En un nodo con decisiones, Siguiente solo funciona
-        // cuando ya se ha elegido una opción.
+        bool hasMoreLines =
+            node.dialogueLines.Count > 0 &&
+            currentLineIndex < node.dialogueLines.Count - 1;
+
         if (hasChoices)
         {
             nextButton.interactable =
+                !hasMoreLines &&
                 choiceAlreadyMade &&
                 GetSavedTarget(node) != null;
         }
         else
         {
-            nextButton.interactable = node.nextNode != null;
+            nextButton.interactable =
+                hasMoreLines || node.nextNode != null;
         }
     }
 

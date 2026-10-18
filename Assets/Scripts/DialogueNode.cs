@@ -9,6 +9,7 @@ public enum MiniGameType
 {
     None,
     Typing,
+    Code,
     Maze
 }
 [Serializable]
@@ -37,4 +38,8 @@ public class DialogueNode : ScriptableObject
 
     [Header("Decisiones")]
     public List<DialogueChoice> choices = new List<DialogueChoice>();
+
+    [Header("Multiple Lines")]
+    [TextArea(3, 6)]
+    public List<string> dialogueLines = new List<string>();
 }
