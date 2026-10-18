@@ -12,7 +12,7 @@ public class WordInputManager : MonoBehaviour
 
     [Header("Feedback")]
     [SerializeField] private TMP_Text feedbackText;
-
+    [SerializeField] private MiniGameManager miniGameManager;
     private void Start()
     {
         for (int i = 0; i < inputFields.Length; i++)
@@ -58,18 +58,10 @@ public class WordInputManager : MonoBehaviour
     {
         string answer = "";
 
-
         for (int i = 0; i < inputFields.Length; i++)
         {
-            Debug.Log($"Field {i}: [{inputFields[i].text}]");
             answer += inputFields[i].text;
         }
-
-        Debug.Log("Player answer: [" + answer + "]");
-        Debug.Log("Correct word: [" + correctWord + "]");
-
-        Debug.Log("Player answer: [" + answer + "]");
-        Debug.Log("Correct word: [" + correctWord + "]");
 
         if (answer.Trim().Equals(
             correctWord.Trim(),
@@ -77,6 +69,8 @@ public class WordInputManager : MonoBehaviour
         {
             feedbackText.text = "Correct!";
             Debug.Log("Correct answer!");
+
+            miniGameManager.FinishMinigame();
         }
         else
         {
