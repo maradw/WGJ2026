@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: ZOfficeBoth
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: 
-  dialogueText: "\u201CEn fin... hora de revisar los pendientes del d\xEDa\""
+  characterName: Me
+  dialogueText: "En fin... hora de revisar los pendientes del d\xEDa"
   characterPortrait: {fileID: 0}
   nextNode: {fileID: 11400000, guid: 5bbf9463038082c4db4eb8941579b003, type: 2}
   choices: []
+  dialogueLines: []

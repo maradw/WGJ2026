@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: ZOfficeCont
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: 
-  dialogueText: "\u201CYa casi termino todo ... y falta poco para irme ...\u201D"
+  characterName: Me
+  dialogueText: Ya casi termino todo ... y falta poco para irme ...
   characterPortrait: {fileID: 0}
   nextNode: {fileID: 11400000, guid: 932d3de74b7e6554c8187d0ded744cd2, type: 2}
   choices: []

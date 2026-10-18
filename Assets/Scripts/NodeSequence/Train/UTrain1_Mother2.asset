@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: UTrain1_Mother2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   characterName: Madre
-  dialogueText: "\u201CTu t\xEDa est\xE1 desesperada, necesita el archivo de la laptop
-    que prepararon anoche\u201D"
+  dialogueText: "Tu t\xEDa est\xE1 desesperada, necesita el archivo de la laptop
+    que prepararon anoche"
   characterPortrait: {fileID: 0}
   nextNode: {fileID: 11400000, guid: f3a2c6508ecea2245854e31e812677b0, type: 2}
   choices: []
+  dialogueLines: []

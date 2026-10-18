@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: UTrain1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: 
-  dialogueText: "\u201CEspero que a\xFAn no haya pasado mi tren\u201D"
+  characterName: Me
+  dialogueText: "Espero que a\xFAn no haya pasado mi tren"
   characterPortrait: {fileID: 0}
   nextNode: {fileID: 11400000, guid: 219076d1b296a9d4081aedd2e0bce8a9, type: 2}
   choices: []
+  dialogueLines: []

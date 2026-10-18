@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: 2Intro
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: self
-  dialogueText: "\u201CSi no salgo en 15 minutos llegar\xE9 tarde otra vez\u201D"
+  characterName: Me
+  dialogueText: "Si no salgo en 15 minutos llegar\xE9 tarde otra vez"
   characterPortrait: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   nextNode: {fileID: 11400000, guid: f020e9c2e8115624b91153a5561827f0, type: 2}
   choices: []
+  dialogueLines: []

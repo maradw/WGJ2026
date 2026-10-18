@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: 4.1 Op1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: self
-  dialogueText: "\u201CGenial (sarc\xE1sticamente) Debo correr a la estaci\xF3n \u201D"
+  characterName: Me
+  dialogueText: "Genial..... Ahora debo correr a la estaci\xF3n"
   characterPortrait: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   nextNode: {fileID: 11400000, guid: 891eba52f772cc14cbcd0e312d1ea853, type: 2}
   choices: []
+  dialogueLines: []

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: 3Intro_roomie
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   characterName: Rommie
-  dialogueText: "\u201CSe me hace tarde! Saca la basura que en la noche no pasar\xE1
-    el cami\xF3n\u201D"
+  dialogueText: "Se me hace tarde! Saca la basura que en la noche no pasar\xE1 el
+    cami\xF3n"
   characterPortrait: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   nextNode: {fileID: 11400000, guid: cb36ede0302d7204bb95230a9b561b13, type: 2}
   choices: []
+  dialogueLines: []
