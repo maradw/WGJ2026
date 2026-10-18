@@ -1,8 +1,9 @@
 
+using Game.Audio;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class VisualNovelManager : MonoBehaviour
 {
@@ -33,9 +34,14 @@ public class VisualNovelManager : MonoBehaviour
 
     [SerializeField] GameObject DialogueSys;
 
+
+
+    [SerializeField] MusicData Background;
+
     private void Start()
     {
        
+
         if (story == null || story.startNode == null)
         {
             Debug.LogWarning("No se ha asignado el inicio de la historia.");
