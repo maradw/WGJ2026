@@ -4,10 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
+
+public enum MiniGameType
+{
+    None,
+    Typing,
+    Maze
+}
+[Serializable]
 public class DialogueChoice
 {
     public string choiceText;
     public DialogueNode nextNode;
+    public MiniGameType miniGameType;
 }
 
 [CreateAssetMenu(

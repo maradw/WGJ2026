@@ -31,6 +31,9 @@ public class MouseMazePlayer : MonoBehaviour
     [SerializeField] GameObject[] target;
     private int currentMaze = 0;
 
+
+    [SerializeField] private MiniGameManager miniGameManager;
+
     private void ActivateMaze()
     {
         for (int i = 0; i < maze.Length; i++)
@@ -179,7 +182,7 @@ public class MouseMazePlayer : MonoBehaviour
                 this.gameObject.SetActive(false);
 
                 //UI finished or restart reinicia si pierdes las 3 vidas
-
+                miniGameManager.FinishMinigame();
             }
 
             return;

@@ -1,19 +1,40 @@
 using UnityEngine;
-
+using System;
 public class MiniGameManager : MonoBehaviour
 {
-    [SerializeField] TypingSystem typingSystem;
-    [SerializeField] MouseMazePlayer mouseMazePlayer;
+    [SerializeField] private TypingSystem typingSystem;
+    [SerializeField] private MouseMazePlayer mouseMazePlayer;
 
-    void Start()
+    [SerializeField] private GameObject typingPanel;
+    [SerializeField] private GameObject mazePanel;
+    public Action OnMinigameFinished;
+    private void Start()
     {
-        mouseMazePlayer.enabled = false;
         typingSystem.enabled = false;
+        mouseMazePlayer.enabled = false;
+
+        typingPanel.SetActive(false);
+        mazePanel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void FinishMinigame()
     {
-        
+        typingSystem.enabled = false;
+        mouseMazePlayer.enabled = false;
+
+        OnMinigameFinished?.Invoke();
+    }
+
+    public void OpenTypingGame()
+    {
+        typingPanel.SetActive(true);
+        typingSystem.enabled = true;
+    }
+
+    public void OpenMazeGame()
+    {
+        mazePanel.SetActive(true);
+        mouseMazePlayer.enabled = true;
     }
 }

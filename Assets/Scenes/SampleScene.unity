@@ -446,6 +446,7 @@ MonoBehaviour:
   choiceButtons:
   - {fileID: 977028446}
   - {fileID: 46063514}
+  miniGameManager: {fileID: 1494749433}
 --- !u!4 &93267202
 Transform:
   m_ObjectHideFlags: 0
@@ -3040,6 +3041,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   typingSystem: {fileID: 876290990}
   mouseMazePlayer: {fileID: 2004765714}
+  typingPanel: {fileID: 876290988}
+  mazePanel: {fileID: 210296226}
 --- !u!4 &1494749434
 Transform:
   m_ObjectHideFlags: 0
@@ -4292,6 +4295,7 @@ MonoBehaviour:
   target:
   - {fileID: 1350599982}
   - {fileID: 1520311003}
+  miniGameManager: {fileID: 1494749433}
 --- !u!50 &2004765715
 Rigidbody2D:
   serializedVersion: 5

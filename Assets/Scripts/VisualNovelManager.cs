@@ -29,6 +29,8 @@ public class VisualNovelManager : MonoBehaviour
     private Dictionary<DialogueNode, DialogueChoice> savedChoices =
         new Dictionary<DialogueNode, DialogueChoice>();
 
+    [SerializeField] private MiniGameManager miniGameManager;
+
     private void Start()
     {
        
@@ -45,11 +47,34 @@ public class VisualNovelManager : MonoBehaviour
     {
         nextButton.onClick.AddListener(NextDialogue);
         backButton.onClick.AddListener(PreviousDialogue);
+        miniGameManager.OnMinigameFinished += ContinueAfterMinigame;
     }
     private void OnDisable()
     {
         nextButton.onClick.RemoveListener(NextDialogue);
         backButton.onClick.RemoveListener(PreviousDialogue);
+        miniGameManager.OnMinigameFinished -= ContinueAfterMinigame;
+    }
+    private void ContinueAfterMinigame()
+    {
+        DialogueNode currentNode = history[currentIndex];
+
+        if (!savedChoices.TryGetValue(currentNode, out DialogueChoice choice))
+        {
+            Debug.LogWarning("No hay una decisión guardada para este nodo.");
+            return;
+        }
+
+        if (choice.nextNode == null)
+        {
+            Debug.LogWarning("La decisión no tiene Next Node asignado.");
+            return;
+        }
+
+        history.Add(choice.nextNode);
+        currentIndex++;
+
+        ShowNode();
     }
     public void NextDialogue()
     {
@@ -101,6 +126,8 @@ public class VisualNovelManager : MonoBehaviour
     {
         DialogueNode currentNode = history[currentIndex];
 
+
+       
         // Una decisión tomada no se puede reemplazar.
         if (savedChoices.ContainsKey(currentNode))
             return;
@@ -110,6 +137,18 @@ public class VisualNovelManager : MonoBehaviour
             return;
 
         DialogueChoice choice = currentNode.choices[optionIndex];
+        savedChoices[currentNode] = choice;
+        if (choice.miniGameType == MiniGameType.Typing)
+        {
+            miniGameManager.OpenTypingGame();
+            return;
+        }
+
+        if (choice.miniGameType == MiniGameType.Maze)
+        {
+            miniGameManager.OpenMazeGame();
+            return;
+        }
 
         if (choice.nextNode == null)
         {
