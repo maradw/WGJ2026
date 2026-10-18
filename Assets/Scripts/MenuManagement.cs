@@ -1,25 +1,27 @@
 using Game.Audio;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MenuManagement : MonoBehaviour
 {
     [SerializeField] Button startButton;
     [SerializeField] Button exitButton;
     [SerializeField] Button creditsButton;
-    [SerializeField] MusicData BgMusic;
-    void Start()
+    [SerializeField] MusicData Background;
+    [SerializeField] MusicData Alarm;
+   IEnumerator Start()
     {
-        Debug.Log("1. Inicio");
-
-        MusicManager.Instance.PlayBG(BgMusic);
-        Debug.Log("2. Música iniciada");
-
         startButton.onClick.AddListener(() => MusicManager.Instance.StopFade(1f));
-        Debug.Log("3. Start asignado");
 
-        exitButton.onClick.AddListener(TransitionManager.Instance.ExitGame);
-        Debug.Log("4. Exit asignado");
+        creditsButton.onClick.AddListener(() => TransitionManager.Instance.LoadScene("CreditsScene"));
+        exitButton.onClick.AddListener(() => TransitionManager.Instance.ExitGame());
+        yield return new WaitForSeconds(0.5f);
+        MusicManager.Instance.PlayBG(Alarm);
+
+       
+        yield return new WaitForSeconds(7f);
+        MusicManager.Instance.PlayBG(Background);
 
     }
 

@@ -13,7 +13,7 @@ public class TransitionManager : MonoBehaviour
     [SerializeField] private float fadeDuration = 1f;
 
    [SerializeField] GameObject creditsPanel;
-    [SerializeField] GameObject audioSettingsPanel;
+ 
 
     private void Awake()
     {
@@ -41,7 +41,7 @@ public class TransitionManager : MonoBehaviour
         fadeImage.gameObject.SetActive(true);
         fadeImage.raycastTarget = true;
         StartCoroutine(FadeIn());
-        audioSettingsPanel.SetActive(false);
+
     }
 
     public void LoadScene(string sceneName)
@@ -65,7 +65,7 @@ public class TransitionManager : MonoBehaviour
     }
     public void ShowAudioSettings()
     {
-        audioSettingsPanel.SetActive(true);
+
     }
     public void LoadSceneCorrutine(string scenename)
     {
