@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: ZOfficeCont
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: Me
-  dialogueText: Ya casi termino todo ... y falta poco para irme ...
-  characterPortrait: {fileID: 0}
+  character: {fileID: 0}
+  background: {fileID: 0}
+  dialogueLines:
+  - "\u201C\xBFMe ayudas?\u201D"
+  changeTime: 0
+  storyTime: 
   nextNode: {fileID: 11400000, guid: 932d3de74b7e6554c8187d0ded744cd2, type: 2}
-  choices: []
-  dialogueLines: []
-  backgroundImage: {fileID: 0}
-  dialogueBoxImage: {fileID: 0}
-  dialogueTextColor: {r: 0, g: 0, b: 0, a: 1}
+  choices:
+  - choiceText: "P\xE1samelo, no se me complica y se lo puedo enviar al jefe"
+    nextNode: {fileID: 11400000, guid: 8c0e33f10945d21468f5a722a93c81cf, type: 2}
+    miniGameType: 1
+  - choiceText: Lo siento, hoy no puedo tengo que llegar temprano a casa
+    nextNode: {fileID: 11400000, guid: b7a9aedf818ca4e4ca3cd714c93edb8d, type: 2}
+    miniGameType: 0

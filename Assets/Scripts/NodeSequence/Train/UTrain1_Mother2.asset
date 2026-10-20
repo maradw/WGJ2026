@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: UTrain1_Mother2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: Madre
-  dialogueText: "Tu t\xEDa est\xE1 desesperada, necesita el archivo de la laptop
-    que prepararon anoche"
-  characterPortrait: {fileID: 0}
-  nextNode: {fileID: 11400000, guid: f3a2c6508ecea2245854e31e812677b0, type: 2}
-  choices: []
-  dialogueLines: []
+  character: {fileID: 11400000, guid: a453702d44fb613488a2e29158780ab4, type: 2}
+  background: {fileID: 11400000, guid: effbf8512d127134ea8ef3faedfd39fa, type: 2}
+  dialogueLines:
+  - "\u201CPorfa prende tu compu y m\xE1ndaselo ahora mismo\u201D"
+  changeTime: 0
+  storyTime: 
+  nextNode: {fileID: 0}
+  choices:
+  - choiceText: "Est\xE1 bien mam\xE1, me siento en una banca y se lo env\xEDo ahora"
+    nextNode: {fileID: 11400000, guid: 58726e7adaa8ff7408acbe25c394fac9, type: 2}
+    miniGameType: 2
+  - choiceText: "Mam\xE1, estoy por subir al bus y voy tarde al trabajo. Se lo env\xEDo
+      apenas llegue."
+    nextNode: {fileID: 11400000, guid: 35988d7af1d69f44bad0c83cb228b80d, type: 2}
+    miniGameType: 0

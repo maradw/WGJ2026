@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: UTrain1_Mother
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: Madre
-  dialogueText: "Hija, cont\xE9stame urgente!"
-  characterPortrait: {fileID: 0}
+  character: {fileID: 11400000, guid: a453702d44fb613488a2e29158780ab4, type: 2}
+  background: {fileID: 11400000, guid: effbf8512d127134ea8ef3faedfd39fa, type: 2}
+  dialogueLines:
+  - "\u201CHija, cont\xE9stame urgente\u201D"
+  - "\u201CTu t\xEDa est\xE1 desesperada, necesita el archivo de la laptop que prepararon
+    anoche\u201D"
+  - "\u201CDice que sin eso no puede presentar su tr\xE1mite hoy\u201D"
+  changeTime: 0
+  storyTime: 
   nextNode: {fileID: 11400000, guid: 1476e81b3de04d04e8e0040272f89d54, type: 2}
   choices: []
-  dialogueLines: []

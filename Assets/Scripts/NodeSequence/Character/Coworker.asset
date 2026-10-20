@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b92e67c370eb4419a2fd1754f4225b, type: 3}
+  m_Name: Coworker
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterName: "Compa\xF1era de trabajo"
+  characterImage: {fileID: 2000304209446663143, guid: 618b6405e2571594da07874c19a856b4, type: 3}
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  dialogueBox: {fileID: -706684969943626725, guid: 4adf6d2bde2ff4c48a6ae4044d79d1cc, type: 3}

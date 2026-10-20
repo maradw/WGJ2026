@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-
 public enum MiniGameType
 {
     None,
@@ -12,6 +10,7 @@ public enum MiniGameType
     Code,
     Maze
 }
+
 [Serializable]
 public class DialogueChoice
 {
@@ -22,28 +21,23 @@ public class DialogueChoice
 
 [CreateAssetMenu(
     fileName = "NewDialogueNode",
-    menuName = "Visual Novel/Dialogue Node")]
+    menuName = "Visual Novel/Dialogue Node"
+)]
 public class DialogueNode : ScriptableObject
 {
-    [Header("Dialogo")]
-    public string characterName;
+    [Header("Character")]
+    public CharacterData character;
 
-    [TextArea(3, 6)]
-    public string dialogueText;
+    [Header("Background")]
+    public BackgroundData background;
 
-    public Sprite characterPortrait;
-
-    [Header("Continuacion")]
-    public DialogueNode nextNode;
-
-    [Header("Decisiones")]
-    public List<DialogueChoice> choices = new List<DialogueChoice>();
-
-    [Header("Multiple Lines")]
-    [TextArea(3, 6)]
     public List<string> dialogueLines = new List<string>();
-    [Header("Visuales")]
-    public Sprite backgroundImage;
-    public Sprite dialogueBoxImage;
-    public Color dialogueTextColor = Color.white;
+
+    [Header("Narrative Time")]
+    public bool changeTime;
+    public string storyTime;
+
+    [Header("Story Flow")]
+    public DialogueNode nextNode;
+    public List<DialogueChoice> choices = new List<DialogueChoice>();
 }

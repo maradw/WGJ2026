@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b92e67c370eb4419a2fd1754f4225b, type: 3}
+  m_Name: Mother
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterName: "Mam\xE1"
+  characterImage: {fileID: -5711576257953581263, guid: 6d2aa03422f527c41931f0a4e8d3f1c6, type: 3}
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  dialogueBox: {fileID: -3798117729592515400, guid: d06dae61b7673094780e5d74960ba13b, type: 3}

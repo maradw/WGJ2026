@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: NoHelpCrew
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: 
-  dialogueText: ...
-  characterPortrait: {fileID: 0}
+  character: {fileID: 0}
+  background: {fileID: 0}
+  dialogueLines:
+  - "\"No podr\xE9 ayudarte esta vez, lo siento\""
+  changeTime: 0
+  storyTime: 
   nextNode: {fileID: 11400000, guid: 6c288abad9d31a542a50bf2fb5e0a776, type: 2}
   choices: []
-  dialogueLines: []

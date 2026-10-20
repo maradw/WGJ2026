@@ -12,24 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: CrewMateOffice
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: "Compa\xF1ero"
-  dialogueText: "Ya te vas?... S\xE9 que no es la primera vez que te pido esto, pero
-    necesito tu ayuda "
-  characterPortrait: {fileID: 0}
-  nextNode: {fileID: 0}
-  choices:
-  - choiceText: "P\xE1samelo, no se me complica y se lo puedo enviar al jefe"
-    nextNode: {fileID: 11400000, guid: 8c0e33f10945d21468f5a722a93c81cf, type: 2}
-    miniGameType: 1
-  - choiceText: Lo siento, hoy no puedo tengo que llegar temprano a casa
-    nextNode: {fileID: 11400000, guid: b7a9aedf818ca4e4ca3cd714c93edb8d, type: 2}
-    miniGameType: 0
+  character: {fileID: 11400000, guid: ec0bd97e4a9200b488e89602e7a0fec9, type: 2}
+  background: {fileID: 11400000, guid: dfc84d6858b96a64fa5fd7195c287a30, type: 2}
   dialogueLines:
   - "\u201CYa te vas?... S\xE9 que no es la primera vez que te pido esto, pero necesito
     tu ayuda\u201D "
   - "\u201CEl jefe quiere este reporte listo para antes de las 9PM y me surgi\xF3
     un compromiso personal."
-  - "\u201C\xBFMe ayudas?\u201D"
-  backgroundImage: {fileID: 2030455511824657429, guid: 96556df598c40a3419e9c02460cbf668, type: 3}
-  dialogueBoxImage: {fileID: -706684969943626725, guid: 4adf6d2bde2ff4c48a6ae4044d79d1cc, type: 3}
-  dialogueTextColor: {r: 0, g: 0, b: 0, a: 1}
+  changeTime: 0
+  storyTime: 
+  nextNode: {fileID: 11400000, guid: 5bbf9463038082c4db4eb8941579b003, type: 2}
+  choices: []

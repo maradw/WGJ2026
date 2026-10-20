@@ -34,6 +34,8 @@ public class MouseMazePlayer : MonoBehaviour
 
     [SerializeField] private MiniGameManager miniGameManager;
 
+
+    int count = 0;
     private void ActivateMaze()
     {
         for (int i = 0; i < maze.Length; i++)
@@ -210,6 +212,18 @@ public class MouseMazePlayer : MonoBehaviour
         }
 
         Debug.Log("Jugador y cursor reiniciados.");
+        count++;
+        print ("times hit the wall: " + count);
+        //loselife
+        if (GameProgressManager.Instance != null)
+        {
+            if(count ==3)
+            {
+                GameProgressManager.Instance.LoseLife();
+                count = 0;
+            }
+            //GameProgressManager.Instance.LoseLife();
+        }
     }
 
     private void OnDisable()

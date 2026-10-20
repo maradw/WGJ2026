@@ -75,6 +75,7 @@ public class WordInputManager : MonoBehaviour
         else
         {
             feedbackText.text = "Incorrect!";
+            GameProgressManager.Instance.LoseLife();
             Debug.Log("Incorrect answer!");
         }
     }

@@ -1,5 +1,5 @@
 using System;
-using UnityEditor.Rendering.LookDev;
+
 using UnityEngine;
 public class MiniGameManager : MonoBehaviour
 {
@@ -12,11 +12,14 @@ public class MiniGameManager : MonoBehaviour
     public Action OnMinigameFinished;
 
     [SerializeField] GameObject DialogueFold;
+
+    [SerializeField] private GameObject miniGamePanel;
     private void Start()
     {
+        miniGamePanel.SetActive(false);
         typingSystem.enabled = false;
         mouseMazePlayer.enabled = false;
-
+        mouseMazePlayer.gameObject.SetActive(false);
         typingPanel.SetActive(false);
         mazePanel.SetActive(false);
 
@@ -34,10 +37,14 @@ public class MiniGameManager : MonoBehaviour
         wordInputManager.enabled= false;
         codePanel.SetActive(false);
         OnMinigameFinished?.Invoke();
+        mouseMazePlayer.gameObject.SetActive(false);
+        miniGamePanel.SetActive(false);
+        typingPanel.SetActive(false);
     }
 
     public void OpenTypingGame()
     {
+        miniGamePanel.SetActive(true);
         DialogueFold.SetActive(false);
         typingPanel.SetActive(true);
         typingSystem.enabled = true;
@@ -45,14 +52,30 @@ public class MiniGameManager : MonoBehaviour
 
     public void OpenMazeGame()
     {
+        miniGamePanel.SetActive(true);
+        mouseMazePlayer.gameObject.SetActive(true);
         DialogueFold.SetActive(false);
         mazePanel.SetActive(true);
         mouseMazePlayer.enabled = true;
     }
     public void OpenCodeGame()
     {
+        miniGamePanel.SetActive(true);
         DialogueFold.SetActive(false);
         codePanel.SetActive(true);
         wordInputManager.enabled = true;
+    }
+    public void ResetMinigames()
+    {
+        miniGamePanel.SetActive(false);
+        typingSystem.enabled = false;
+        mouseMazePlayer.enabled = false;
+        wordInputManager.enabled = false;
+        mouseMazePlayer.gameObject.SetActive(false);
+        typingPanel.SetActive(false);
+        mazePanel.SetActive(false);
+        codePanel.SetActive(false);
+
+        DialogueFold.SetActive(true);
     }
 }

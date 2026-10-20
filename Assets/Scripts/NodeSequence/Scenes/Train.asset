@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dc7771a8986c04db7993adcad3a908, type: 3}
+  m_Name: Train
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundData
+  backgroundImage: {fileID: -4076133315747464974, guid: 15fffc88a1d790d46a6366ab36f5df02, type: 3}

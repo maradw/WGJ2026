@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: HelpCrew
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: 
-  dialogueText: "Correo enviado con \xE9xito! Ya puedes ir a casa "
-  characterPortrait: {fileID: 0}
+  character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
+  background: {fileID: 0}
+  dialogueLines:
+  - "Correo enviado con \xE9xito! Ya puedes ir a casa "
+  changeTime: 0
+  storyTime: 
   nextNode: {fileID: 11400000, guid: 08a45d03d56921f468ee8e459a5724f2, type: 2}
   choices: []
-  dialogueLines: []

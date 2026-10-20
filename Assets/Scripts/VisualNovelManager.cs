@@ -7,94 +7,103 @@ using UnityEngine.UI;
 
 public class VisualNovelManager : MonoBehaviour
 {
-    [Header("Historia")]
+    [Header("Story")]
     [SerializeField] private StoryData story;
 
-    [Header("Interfaz")]
+    [Header("Interface")]
     [SerializeField] private TMP_Text characterNameText;
     [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private TMP_Text storyTimeText;
     [SerializeField] private Image characterPortrait;
-
-    [Header("Botones principales")]
+    [SerializeField] private Image backgroundImage;
+    [SerializeField] private Image dialogueBoxImage;
     [SerializeField] private Button nextButton;
     [SerializeField] private Button backButton;
-
-    [Header("Botones de decisiones")]
     [SerializeField] private List<Button> choiceButtons;
 
-    // Recorrido que ya hizo el jugador.
+    [Header("Minigames")]
+    [SerializeField] private MiniGameManager miniGameManager;
+    [SerializeField] private GameObject DialogueSys;
+
+    [Header("Audio")]
+    [SerializeField] private MusicData Background;
+
     private List<DialogueNode> history = new List<DialogueNode>();
-    private int currentIndex = 0;
-    private int currentLineIndex = 0;
-    // Registra la decisión tomada en cada nodo.
+    private int currentIndex;
+    private int currentLineIndex;
+
     private Dictionary<DialogueNode, DialogueChoice> savedChoices =
         new Dictionary<DialogueNode, DialogueChoice>();
 
-    [SerializeField] private MiniGameManager miniGameManager;
-
-    [SerializeField] GameObject DialogueSys;
-
-
-
-    [SerializeField] MusicData Background;
-
-    [Header("Interfaz visual")]
-    [SerializeField] private Image backgroundImage;
-    [SerializeField] private Image dialogueBoxImage;
 
     private void Start()
     {
-       
-
         if (story == null || story.startNode == null)
         {
-            Debug.LogWarning("No se ha asignado el inicio de la historia.");
+            Debug.LogError("Story or Start Node is missing.");
             return;
         }
 
         history.Add(story.startNode);
         ShowNode();
     }
+
     private void OnEnable()
     {
-        nextButton.onClick.AddListener(NextDialogue);
-        backButton.onClick.AddListener(PreviousDialogue);
-        miniGameManager.OnMinigameFinished += ContinueAfterMinigame;
+        if (nextButton != null)
+            nextButton.onClick.AddListener(NextDialogue);
+
+        if (backButton != null)
+            backButton.onClick.AddListener(PreviousDialogue);
+
+        if (miniGameManager != null)
+            miniGameManager.OnMinigameFinished += ContinueAfterMinigame;
     }
+
     private void OnDisable()
     {
-        nextButton.onClick.RemoveListener(NextDialogue);
-        backButton.onClick.RemoveListener(PreviousDialogue);
-        miniGameManager.OnMinigameFinished -= ContinueAfterMinigame;
+        if (nextButton != null)
+            nextButton.onClick.RemoveListener(NextDialogue);
+
+        if (backButton != null)
+            backButton.onClick.RemoveListener(PreviousDialogue);
+
+        if (miniGameManager != null)
+            miniGameManager.OnMinigameFinished -= ContinueAfterMinigame;
     }
+
     private void ContinueAfterMinigame()
     {
+        if (currentIndex < 0 || currentIndex >= history.Count)
+            return;
+
         DialogueNode currentNode = history[currentIndex];
 
         if (!savedChoices.TryGetValue(currentNode, out DialogueChoice choice))
         {
-            Debug.LogWarning("No hay una decisión guardada para este nodo.");
+            Debug.LogWarning("No saved choice was found after the minigame.");
             return;
         }
 
         if (choice.nextNode == null)
         {
-            Debug.LogWarning("La decisión no tiene Next Node asignado.");
+            Debug.LogWarning("The selected choice has no Next Node assigned.");
             return;
         }
-        currentLineIndex = 0;
+
         history.Add(choice.nextNode);
-        currentIndex++;
+        currentIndex = history.Count - 1;
+        currentLineIndex = 0;
 
         ShowNode();
     }
+
     public void NextDialogue()
     {
-
-
+        if (history.Count == 0)
+            return;
 
         DialogueNode currentNode = history[currentIndex];
-
 
 
         if (currentLineIndex < currentNode.dialogueLines.Count - 1)
@@ -104,45 +113,46 @@ public class VisualNovelManager : MonoBehaviour
             return;
         }
 
-        // Si ya avanzamos y retrocedimos, reproducir
-        // el recorrido guardado, sin crear otra ruta.
+
         if (currentIndex < history.Count - 1)
         {
             currentIndex++;
+            currentLineIndex = 0;
             ShowNode();
             return;
         }
 
-        DialogueNode targetNode = null;
-
         if (currentNode.choices.Count > 0)
         {
-            // Solo podemos continuar por la opción guardada.
-            if (!savedChoices.TryGetValue(currentNode, out DialogueChoice savedChoice))
-                return;
+            if (savedChoices.TryGetValue(currentNode, out DialogueChoice choice))
+            {
+                if (choice.nextNode != null)
+                {
+                    history.Add(choice.nextNode);
+                    currentIndex = history.Count - 1;
+                    currentLineIndex = 0;
+                    ShowNode();
+                }
+            }
 
-            targetNode = savedChoice.nextNode;
-        }
-        else
-        {
-            targetNode = currentNode.nextNode;
-        }
-
-        if (targetNode == null)
             return;
+        }
 
-        //////
-        ///
-        currentLineIndex = 0;
-
-        history.Add(targetNode);
-        currentIndex++;
-
-        ShowNode();
+        if (currentNode.nextNode != null)
+        {
+            history.Add(currentNode.nextNode);
+            currentIndex = history.Count - 1;
+            currentLineIndex = 0;
+            ShowNode();
+        }
     }
 
     public void PreviousDialogue()
     {
+        if (history.Count == 0)
+            return;
+
+
         if (currentLineIndex > 0)
         {
             currentLineIndex--;
@@ -150,156 +160,198 @@ public class VisualNovelManager : MonoBehaviour
             return;
         }
 
-        if (currentIndex <= 0)
-            return;
 
-        currentIndex--;
+        if (currentIndex > 0)
+        {
+            currentIndex--;
 
-        DialogueNode previousNode = history[currentIndex];
+            DialogueNode previousNode = history[currentIndex];
 
-        currentLineIndex = previousNode.dialogueLines.Count > 0
-            ? previousNode.dialogueLines.Count - 1
-            : 0;
+            currentLineIndex = Mathf.Max(
+                0,
+                previousNode.dialogueLines.Count - 1
+            );
 
-        ShowNode();
+            ShowNode();
+        }
     }
 
-    private void ChooseOption(int optionIndex)
+    public void ChooseOption(DialogueChoice choice)
     {
+        if (choice == null)
+            return;
+
         DialogueNode currentNode = history[currentIndex];
 
 
-       
-        // Una decisión tomada no se puede reemplazar.
         if (savedChoices.ContainsKey(currentNode))
             return;
 
-        if (optionIndex < 0 ||
-            optionIndex >= currentNode.choices.Count)
-            return;
 
-        DialogueChoice choice = currentNode.choices[optionIndex];
+        if (choice.miniGameType == MiniGameType.None &&
+            choice.nextNode == null)
+        {
+            Debug.LogWarning("The selected choice has no Next Node.");
+            return;
+        }
+
         savedChoices[currentNode] = choice;
-        if (choice.miniGameType == MiniGameType.Typing)
-        {
-            miniGameManager.OpenTypingGame();
-            return;
-        }
 
-        if (choice.miniGameType == MiniGameType.Maze)
+        switch (choice.miniGameType)
         {
-            miniGameManager.OpenMazeGame();
-            return;
-        }
-        if(choice.miniGameType == MiniGameType.Code)
-        {
-            miniGameManager.OpenCodeGame();
-            return;
-        }
+            case MiniGameType.Typing:
+                if (miniGameManager != null)
+                    miniGameManager.OpenTypingGame();
+                break;
 
-        if (choice.nextNode == null)
-        {
-            Debug.LogWarning("La opcion no tiene un nodo de destino.");
-            return;
+            case MiniGameType.Maze:
+                if (miniGameManager != null)
+                    miniGameManager.OpenMazeGame();
+                break;
+
+            case MiniGameType.Code:
+                if (miniGameManager != null)
+                    miniGameManager.OpenCodeGame();
+                break;
+
+            case MiniGameType.None:
+                history.Add(choice.nextNode);
+                currentIndex = history.Count - 1;
+                currentLineIndex = 0;
+                ShowNode();
+                break;
         }
-
-        //  savedChoices.Add(currentNode, choice);
-        currentLineIndex = 0;
-        // Avanzamos inmediatamente por la ruta elegida.
-        history.Add(choice.nextNode);
-        currentIndex++;
-
-        ShowNode();
     }
 
     private void ShowNode()
     {
+        if (history.Count == 0)
+            return;
+
         DialogueNode node = history[currentIndex];
 
-        characterNameText.text = node.characterName;
-        characterPortrait.sprite = node.characterPortrait;
-        characterPortrait.enabled = node.characterPortrait != null;
-        if (node.backgroundImage != null)
+
+        if (node.character != null)
         {
-            backgroundImage.sprite = node.backgroundImage;
+            characterNameText.text = node.character.characterName;
+
+            characterPortrait.sprite = node.character.characterImage;
+            characterPortrait.enabled =
+                node.character.characterImage != null;
+
+            dialogueText.color = node.character.textColor;
+
+            if (node.character.dialogueBox != null)
+            {
+                dialogueBoxImage.sprite = node.character.dialogueBox;
+                dialogueBoxImage.enabled = true;
+            }
         }
 
-        if (node.dialogueBoxImage != null)
+    
+        if (node.background != null)
         {
-            dialogueBoxImage.sprite = node.dialogueBoxImage;
+            backgroundImage.sprite = node.background.backgroundImage;
+            backgroundImage.enabled =
+                node.background.backgroundImage != null;
         }
-        // Display the current dialogue line
+
+        if (node.changeTime && storyTimeText != null)
+        {
+            storyTimeText.text = node.storyTime;
+        }
+
+
         if (node.dialogueLines.Count > 0)
         {
             currentLineIndex = Mathf.Clamp(
-                currentLineIndex, 0, node.dialogueLines.Count - 1);
+                currentLineIndex,
+                0,
+                node.dialogueLines.Count - 1
+            );
 
             dialogueText.text = node.dialogueLines[currentLineIndex];
         }
         else
         {
-            dialogueText.text = node.dialogueText;
+            dialogueText.text = "";
         }
-        dialogueText.color = node.dialogueTextColor;
 
         backButton.interactable =
             currentIndex > 0 || currentLineIndex > 0;
 
-        for (int i = 0; i < choiceButtons.Count; i++)
-            choiceButtons[i].gameObject.SetActive(false);
 
-        bool hasChoices = node.choices.Count > 0;
-        bool choiceAlreadyMade = savedChoices.ContainsKey(node);
-
-        if (hasChoices && !choiceAlreadyMade)
+        foreach (Button button in choiceButtons)
         {
-            for (int i = 0; i < node.choices.Count; i++)
-            {
-                if (i >= choiceButtons.Count)
-                    break;
+            button.gameObject.SetActive(false);
+            button.onClick.RemoveAllListeners();
+        }
 
-                Button button = choiceButtons[i];
+
+        bool hasSavedChoice = savedChoices.ContainsKey(node);
+
+        if (node.choices.Count > 0 && !hasSavedChoice)
+        {
+            for (int i = 0; i < node.choices.Count &&
+                            i < choiceButtons.Count; i++)
+            {
                 DialogueChoice choice = node.choices[i];
+                Button button = choiceButtons[i];
 
                 button.gameObject.SetActive(true);
 
-                TMP_Text buttonText =
-                    button.GetComponentInChildren<TMP_Text>();
+                TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
 
                 if (buttonText != null)
                     buttonText.text = choice.choiceText;
 
-                button.onClick.RemoveAllListeners();
-
-                int optionIndex = i;
-                button.onClick.AddListener(
-                    () => ChooseOption(optionIndex));
+                button.onClick.AddListener(() => ChooseOption(choice));
             }
         }
 
+
         bool hasMoreLines =
-            node.dialogueLines.Count > 0 &&
             currentLineIndex < node.dialogueLines.Count - 1;
 
-        if (hasChoices)
-        {
-            nextButton.interactable =
-                !hasMoreLines &&
-                choiceAlreadyMade &&
-                GetSavedTarget(node) != null;
-        }
-        else
-        {
-            nextButton.interactable =
-                hasMoreLines || node.nextNode != null;
-        }
+        bool canFollowNextNode = node.nextNode != null;
+
+        bool canFollowSavedChoice =
+            hasSavedChoice &&
+            savedChoices[node].nextNode != null;
+
+        nextButton.interactable =
+            hasMoreLines ||
+            currentIndex < history.Count - 1 ||
+            (node.choices.Count == 0 && canFollowNextNode) ||
+            (node.choices.Count > 0 && canFollowSavedChoice);
     }
 
-    private DialogueNode GetSavedTarget(DialogueNode node)
-    {
-        if (savedChoices.TryGetValue(node, out DialogueChoice choice))
-            return choice.nextNode;
 
-        return null;
+
+
+    public void RestartStory()
+    {
+        //inside
+        if (story == null || story.startNode == null)
+            return;
+
+        // Cerrar los minijuegos y volver al diálogo.
+        if (miniGameManager != null)
+            miniGameManager.ResetMinigames();
+
+        // Borrar el progreso anterior.
+        history.Clear();
+        savedChoices.Clear();
+
+        currentIndex = 0;
+        currentLineIndex = 0;
+
+        // Volver al inicio y restaurar las vidas.
+        history.Add(story.startNode);
+
+        if (GameProgressManager.Instance != null)
+            GameProgressManager.Instance.ResetLives();
+
+        ShowNode();
     }
 }

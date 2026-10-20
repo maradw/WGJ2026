@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b92e67c370eb4419a2fd1754f4225b, type: 3}
+  m_Name: Self
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterName: Me
+  characterImage: {fileID: 934778901455067952, guid: 3a5840254f71d1d40bbda05faaa6f1e6, type: 3}
+  textColor: {r: 0, g: 0, b: 0, a: 1}
+  dialogueBox: {fileID: -2173566923263989653, guid: fc32ed11f48fe5a4c9ccc428ce9597a7, type: 3}

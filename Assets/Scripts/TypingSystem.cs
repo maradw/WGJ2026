@@ -10,7 +10,8 @@ public class TypingSystem : MonoBehaviour
     [SerializeField] Button submitButton;
     [SerializeField] TextMeshProUGUI phrase;
 
-    private string correctPhrase = "aprende a decir q no waza";
+    private string correctPhrase = "aprende a decir que no";
+    [SerializeField] private MiniGameManager miniGameManager;
 
     private void Start()
     {
@@ -23,10 +24,13 @@ public class TypingSystem : MonoBehaviour
         if (answerField.text == correctPhrase)
         {
             print("Correct!");
+            miniGameManager.FinishMinigame();
         }
         else
         {
+           
             print("Incorrect. Try again.");
+            GameProgressManager.Instance.LoseLife();
             answerField.text = "";
             answerField.ActivateInputField();
         }

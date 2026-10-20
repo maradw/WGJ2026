@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: VAuntTaskNO
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: 
-  dialogueText: ...
-  characterPortrait: {fileID: 0}
+  character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
+  background: {fileID: 11400000, guid: 4e6b9c5317cc65741a3262d1d54c1520, type: 2}
+  dialogueLines:
+  - "\"Parece que llegar\xE9 temprano\""
+  changeTime: 0
+  storyTime: 
   nextNode: {fileID: 11400000, guid: e4631ce2285150244a6fc16c8fa6c4d2, type: 2}
   choices: []

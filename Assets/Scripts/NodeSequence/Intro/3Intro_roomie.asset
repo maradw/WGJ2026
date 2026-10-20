@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: 3Intro_roomie
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: Rommie
-  dialogueText: "Se me hace tarde! Saca la basura que en la noche no pasar\xE1 el
-    cami\xF3n"
-  characterPortrait: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  character: {fileID: 11400000, guid: 41c136cc90c1c574092dbd8696c14a8f, type: 2}
+  background: {fileID: 11400000, guid: 92d44e003382e064f82965067dd49126, type: 2}
+  dialogueLines:
+  - "\u201CSe me hace tarde! Saca la basura que en la noche no pasar\xE1 el cami\xF3n\u201D"
+  changeTime: 1
+  storyTime: 7:15 AM
   nextNode: {fileID: 11400000, guid: cb36ede0302d7204bb95230a9b561b13, type: 2}
   choices: []
-  dialogueLines: []

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: HomeSaidYes
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  characterName: 
-  dialogueText: 
-  characterPortrait: {fileID: 0}
-  nextNode: {fileID: 0}
-  choices: []
+  character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
+  background: {fileID: 11400000, guid: 5fd90a0a667c16d469687197f42d7539, type: 2}
   dialogueLines:
   - "\u201CAl fin en casa... Son las 10:00 PM y no me quedan fuerzas ni para cenar\u201D"
   - "\u201CGenial, olvid\xE9 darle la comida al gato...\u201D"
+  changeTime: 0
+  storyTime: 
+  nextNode: {fileID: 0}
+  choices: []
