@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: ZOfficeBoth
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  character: {fileID: 0}
+  character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
   background: {fileID: 11400000, guid: dfc84d6858b96a64fa5fd7195c287a30, type: 2}
   dialogueLines:
-  - "\u201CEn fin... hora de revisar los pendientes del d\xEDa\""
+  - "En fin... hora de revisar los pendientes del d\xEDa"
   changeTime: 0
   storyTime: 
   nextNode: {fileID: 11400000, guid: 8f4a956acc64fa24da92fee225c2c2b1, type: 2}

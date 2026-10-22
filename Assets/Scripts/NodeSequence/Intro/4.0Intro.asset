@@ -15,7 +15,7 @@ MonoBehaviour:
   character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
   background: {fileID: 0}
   dialogueLines:
-  - "\u201Cuh pero yo tambi\xE9n estoy tarde. \xBFAhora que hago? ...\u201D"
+  - "uh pero yo tambi\xE9n estoy tarde. \xBFAhora que hago? ..."
   changeTime: 0
   storyTime: 
   nextNode: {fileID: 0}

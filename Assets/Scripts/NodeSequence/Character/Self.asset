@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Self
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Me
-  characterImage: {fileID: 934778901455067952, guid: 3a5840254f71d1d40bbda05faaa6f1e6, type: 3}
+  characterImage: {fileID: 0}
   textColor: {r: 0, g: 0, b: 0, a: 1}
   dialogueBox: {fileID: -2173566923263989653, guid: fc32ed11f48fe5a4c9ccc428ce9597a7, type: 3}

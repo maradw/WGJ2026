@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Coworker
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: "Compa\xF1era de trabajo"
-  characterImage: {fileID: 2000304209446663143, guid: 618b6405e2571594da07874c19a856b4, type: 3}
+  characterImage: {fileID: 0}
   textColor: {r: 1, g: 1, b: 1, a: 1}
   dialogueBox: {fileID: -706684969943626725, guid: 4adf6d2bde2ff4c48a6ae4044d79d1cc, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: ZOfficeCont
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  character: {fileID: 0}
+  character: {fileID: 11400000, guid: ec0bd97e4a9200b488e89602e7a0fec9, type: 2}
   background: {fileID: 0}
   dialogueLines:
   - "\u201C\xBFMe ayudas?\u201D"

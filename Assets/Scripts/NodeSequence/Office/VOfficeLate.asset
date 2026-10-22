@@ -15,8 +15,8 @@ MonoBehaviour:
   character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
   background: {fileID: 11400000, guid: dfc84d6858b96a64fa5fd7195c287a30, type: 2}
   dialogueLines:
-  - "\u201COtra vez tarde, me rega\xF1aron ... no creo que hoy vaya a ser un buen
-    d\xEDa\u201D"
+  - "Otra vez tarde, me rega\xF1aron ... no creo que hoy vaya a ser un buen
+    d\xEDa"
   changeTime: 0
   storyTime: 
   nextNode: {fileID: 11400000, guid: f98ac35cfadad4949aab7a9332205c25, type: 2}

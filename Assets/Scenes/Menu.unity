@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TransitionManager
   fadeImage: {fileID: 987793312}
-  fadeDuration: 7
+  fadeDuration: 0.6
   creditsPanel: {fileID: 0}
 --- !u!4 &693481105
 Transform:

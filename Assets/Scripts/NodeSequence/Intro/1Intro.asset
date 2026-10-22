@@ -15,8 +15,8 @@ MonoBehaviour:
   character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
   background: {fileID: 11400000, guid: 92d44e003382e064f82965067dd49126, type: 2}
   dialogueLines:
-  - "Dios mio! .... Me quede dormida y ya es tarde\u201D"
-  - "\u201CSi no salgo en 15 minutos llegar\xE9 tarde otra vez\u201D"
+  - "Dios mio! .... Me quede dormida y ya es tarde"
+  - "Si no salgo en 15 minutos llegar\xE9 tarde otra vez"
   changeTime: 1
   storyTime: 7:00 AM
   nextNode: {fileID: 11400000, guid: f020e9c2e8115624b91153a5561827f0, type: 2}

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2028b288a8ea77a49a1532e07bafa12f, type: 3}
   m_Name: 4.1 Op1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  character: {fileID: 0}
+  character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
   background: {fileID: 11400000, guid: 92d44e003382e064f82965067dd49126, type: 2}
   dialogueLines:
-  - "\u201CGenial (sarc\xE1sticamente) Debo correr a la estaci\xF3n \u201D"
+  - "Genial (sarc\xE1sticamente) Debo correr a la estaci\xF3n"
   changeTime: 1
   storyTime: 7:30 AM
   nextNode: {fileID: 11400000, guid: 891eba52f772cc14cbcd0e312d1ea853, type: 2}

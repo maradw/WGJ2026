@@ -15,8 +15,8 @@ MonoBehaviour:
   character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
   background: {fileID: 11400000, guid: 5fd90a0a667c16d469687197f42d7539, type: 2}
   dialogueLines:
-  - "\u201CLlegu\xE9 a tiempo a casa para descansar\u201D"
-  - "\u201CDije que no y el mundo no se acab\xF3\u201D"
+  - "Llegu\xE9 a tiempo a casa para descansar"
+  - "Dije que no y el mundo no se acab\xF3"
   changeTime: 0
   storyTime: 
   nextNode: {fileID: 0}
