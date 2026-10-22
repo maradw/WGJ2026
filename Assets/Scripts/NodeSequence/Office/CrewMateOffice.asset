@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CrewMateOffice
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   character: {fileID: 11400000, guid: ec0bd97e4a9200b488e89602e7a0fec9, type: 2}
-  background: {fileID: 11400000, guid: dfc84d6858b96a64fa5fd7195c287a30, type: 2}
+  background: {fileID: 11400000, guid: 620e9e3c592b1e7418bf5881775cdcee, type: 2}
   dialogueLines:
   - "\u201CYa te vas?... S\xE9 que no es la primera vez que te pido esto, pero necesito
     tu ayuda\u201D "

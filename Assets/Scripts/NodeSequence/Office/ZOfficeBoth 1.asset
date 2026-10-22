@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ZOfficeBoth 1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
-  background: {fileID: 11400000, guid: dfc84d6858b96a64fa5fd7195c287a30, type: 2}
+  background: {fileID: 11400000, guid: 620e9e3c592b1e7418bf5881775cdcee, type: 2}
   dialogueLines:
-  - "Ya casi termino todo ... y falta poco para irme ..."
+  - Ya casi termino todo ... y falta poco para irme ...
   changeTime: 0
   storyTime: 
   nextNode: {fileID: 11400000, guid: 932d3de74b7e6554c8187d0ded744cd2, type: 2}
