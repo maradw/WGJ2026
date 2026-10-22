@@ -14,6 +14,7 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] GameObject DialogueFold;
 
     [SerializeField] private GameObject miniGamePanel;
+    [SerializeField] private GameObject mazeText;
     private void Start()
     {
         miniGamePanel.SetActive(false);
@@ -45,6 +46,7 @@ public class MiniGameManager : MonoBehaviour
     public void OpenTypingGame()
     {
         miniGamePanel.SetActive(true);
+        mazeText.SetActive(false);
         DialogueFold.SetActive(false);
         typingPanel.SetActive(true);
         typingSystem.enabled = true;
@@ -53,6 +55,7 @@ public class MiniGameManager : MonoBehaviour
     public void OpenMazeGame()
     {
         miniGamePanel.SetActive(true);
+        mazeText.SetActive(true);
         mouseMazePlayer.gameObject.SetActive(true);
         DialogueFold.SetActive(false);
         mazePanel.SetActive(true);
@@ -61,6 +64,7 @@ public class MiniGameManager : MonoBehaviour
     public void OpenCodeGame()
     {
         miniGamePanel.SetActive(true);
+        mazeText.SetActive(false);
         DialogueFold.SetActive(false);
         codePanel.SetActive(true);
         wordInputManager.enabled = true;
