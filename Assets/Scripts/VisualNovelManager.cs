@@ -3,6 +3,7 @@ using Game.Audio;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class VisualNovelManager : MonoBehaviour
@@ -28,12 +29,17 @@ public class VisualNovelManager : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private MusicData Background;
 
+    [Header("Ending")]
+    [SerializeField] private string menuScene = "Menu";
+
     private List<DialogueNode> history = new List<DialogueNode>();
     private int currentIndex;
     private int currentLineIndex;
 
     private Dictionary<DialogueNode, DialogueChoice> savedChoices =
         new Dictionary<DialogueNode, DialogueChoice>();
+
+    private bool storyFinished;
 
 
     private void Start()
@@ -144,7 +150,27 @@ public class VisualNovelManager : MonoBehaviour
             currentIndex = history.Count - 1;
             currentLineIndex = 0;
             ShowNode();
+            return;
         }
+
+        // Nodo sin siguiente ni opciones: es un final.
+        FinishStory();
+    }
+
+    private void FinishStory()
+    {
+        if (storyFinished)
+            return;
+
+        storyFinished = true;
+
+        if (MusicManager.Instance != null)
+            MusicManager.Instance.StopFade(1f);
+
+        if (TransitionManager.Instance != null)
+            TransitionManager.Instance.LoadScene(menuScene);
+        else
+            SceneManager.LoadScene(menuScene);
     }
 
     public void PreviousDialogue()
@@ -315,6 +341,9 @@ public class VisualNovelManager : MonoBehaviour
 
         bool canFollowNextNode = node.nextNode != null;
 
+        bool isEnding =
+            node.choices.Count == 0 && !canFollowNextNode;
+
         bool canFollowSavedChoice =
             hasSavedChoice &&
             savedChoices[node].nextNode != null;
@@ -323,6 +352,7 @@ public class VisualNovelManager : MonoBehaviour
             hasMoreLines ||
             currentIndex < history.Count - 1 ||
             (node.choices.Count == 0 && canFollowNextNode) ||
+            isEnding ||
             (node.choices.Count > 0 && canFollowSavedChoice);
     }
 

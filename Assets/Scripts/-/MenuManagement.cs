@@ -10,11 +10,13 @@ public class MenuManagement : MonoBehaviour
     [SerializeField] Button creditsButton;
     [SerializeField] MusicData Background;
     [SerializeField] MusicData Alarm;
+    [SerializeField] string gameplayScene = "GamePlay";
    IEnumerator Start()
     {
         startButton.onClick.AddListener(() => MusicManager.Instance.StopFade(1f));
+        startButton.onClick.AddListener(() => TransitionManager.Instance.LoadScene(gameplayScene));
 
-        creditsButton.onClick.AddListener(() => TransitionManager.Instance.LoadScene("CreditsScene"));
+        // El panel de créditos se abre desde el OnClick del botón en la escena.
         exitButton.onClick.AddListener(() => TransitionManager.Instance.ExitGame());
         yield return new WaitForSeconds(0.5f);
         MusicManager.Instance.PlayBG(Alarm);
