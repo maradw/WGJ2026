@@ -10,18 +10,21 @@ public class TypingSystem : MonoBehaviour
     [SerializeField] Button submitButton;
     [SerializeField] TextMeshProUGUI phrase;
 
-    private string correctPhrase = "aprende a decir que no";
+    [SerializeField] private string instruction = "Escribe la siguiente frase:";
+    [SerializeField] private string correctPhrase = "Tengo que aprender a decir que no";
     [SerializeField] private MiniGameManager miniGameManager;
 
     private void Start()
     {
-        phrase.text = correctPhrase;
+        phrase.text = instruction;
         submitButton.onClick.AddListener(SubmitAnswer);
     }
 
     public void SubmitAnswer()
     {
-        if (answerField.text == correctPhrase)
+        if (answerField.text.Trim().Equals(
+            correctPhrase.Trim(),
+            System.StringComparison.OrdinalIgnoreCase))
         {
             print("Correct!");
             miniGameManager.FinishMinigame();
