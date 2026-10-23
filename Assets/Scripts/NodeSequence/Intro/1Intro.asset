@@ -19,5 +19,10 @@ MonoBehaviour:
   - "Si no salgo en 15 minutos llegar\xE9 tarde, \xA1Otra vez!"
   changeTime: 1
   storyTime: 7:00 AM
+  lineTimes: []
+  choiceTime: 
+  music: {fileID: 11400000, guid: 1d0f336207467c044a25334cead879f1, type: 2}
+  lineSfx:
+  - {fileID: 8300000, guid: fe51f041f0867904e90d869be2168a38, type: 3}
   nextNode: {fileID: 11400000, guid: f020e9c2e8115624b91153a5561827f0, type: 2}
   choices: []

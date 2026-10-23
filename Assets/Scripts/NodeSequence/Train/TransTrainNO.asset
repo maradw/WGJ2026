@@ -18,5 +18,10 @@ MonoBehaviour:
   - "Felizmente no saque la basura, llegu\xE9 a tiempo"
   changeTime: 1
   storyTime: 7:30 AM
+  lineTimes: []
+  choiceTime: 
+  music: {fileID: 11400000, guid: 9a578bc6530135148adf18f85c0caa2e, type: 2}
+  lineSfx:
+  - {fileID: 8300000, guid: 1d1e3f02fb36df943bb097dc1d3e21e9, type: 3}
   nextNode: {fileID: 11400000, guid: 891eba52f772cc14cbcd0e312d1ea853, type: 2}
   choices: []

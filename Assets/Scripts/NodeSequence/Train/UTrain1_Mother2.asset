@@ -21,6 +21,9 @@ MonoBehaviour:
   lineTimes:
   - 7:39 AM
   choiceTime: 7:40 AM
+  music: {fileID: 0}
+  lineSfx:
+  - {fileID: 8300000, guid: 340990a1e5ccad34583859e16c952ecb, type: 3}
   nextNode: {fileID: 0}
   choices:
   - choiceText: "Est\xE1 bien mam\xE1, me siento en una banca y se lo env\xEDo ahora"

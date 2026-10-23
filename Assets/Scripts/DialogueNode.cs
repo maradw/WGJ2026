@@ -42,6 +42,12 @@ public class DialogueNode : ScriptableObject
     // Si tiene valor, las opciones aparecen al pulsar Siguiente en la última línea, con esta hora.
     public string choiceTime;
 
+    [Header("Audio")]
+    // Música de fondo desde este nodo; vacío = sigue la que suena.
+    public Game.Audio.MusicData music;
+    // Efecto por línea de diálogo, suena al avanzar a esa línea; vacío = ninguno.
+    public List<AudioClip> lineSfx = new List<AudioClip>();
+
     [Header("Story Flow")]
     public DialogueNode nextNode;
     public List<DialogueChoice> choices = new List<DialogueChoice>();
