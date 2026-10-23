@@ -1,5 +1,5 @@
 using System;
-
+using Game.Audio;
 using UnityEngine;
 public class MiniGameManager : MonoBehaviour
 {
@@ -15,6 +15,25 @@ public class MiniGameManager : MonoBehaviour
 
     [SerializeField] private GameObject miniGamePanel;
     [SerializeField] private GameObject mazeText;
+
+    [Header("Audio")]
+    [SerializeField] private MusicData mazeMusic;
+    [SerializeField] private MusicData codeMusic;
+    [SerializeField] private MusicData typingMusic;
+    [SerializeField] private AudioClip typingSfx;
+    [SerializeField] private AudioClip successSfx;
+    // Música de la historia que sonaba antes del minijuego, para retomarla al terminar.
+    private MusicData storyMusic;
+
+    private void PlayMinigameMusic(MusicData music)
+    {
+        if (MusicManager.Instance == null)
+            return;
+
+        storyMusic = MusicManager.Instance.CurrentMusic;
+        MusicManager.Instance.PlayBG(music);
+    }
+
     private void Start()
     {
         miniGamePanel.SetActive(false);
@@ -32,6 +51,13 @@ public class MiniGameManager : MonoBehaviour
 
     public void FinishMinigame()
     {
+        // Antes de continuar la historia: el siguiente nodo puede cambiar la música otra vez.
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.PlaySFX(successSfx);
+            MusicManager.Instance.PlayBG(storyMusic);
+        }
+
         DialogueFold.SetActive(true);
         typingSystem.enabled = false;
         mouseMazePlayer.enabled = false;
@@ -50,6 +76,9 @@ public class MiniGameManager : MonoBehaviour
         DialogueFold.SetActive(false);
         typingPanel.SetActive(true);
         typingSystem.enabled = true;
+        PlayMinigameMusic(typingMusic);
+        if (MusicManager.Instance != null)
+            MusicManager.Instance.PlaySFX(typingSfx);
     }
 
     public void OpenMazeGame()
@@ -60,6 +89,7 @@ public class MiniGameManager : MonoBehaviour
         DialogueFold.SetActive(false);
         mazePanel.SetActive(true);
         mouseMazePlayer.enabled = true;
+        PlayMinigameMusic(mazeMusic);
     }
     public void OpenCodeGame()
     {
@@ -68,6 +98,7 @@ public class MiniGameManager : MonoBehaviour
         DialogueFold.SetActive(false);
         codePanel.SetActive(true);
         wordInputManager.enabled = true;
+        PlayMinigameMusic(codeMusic);
     }
     public void ResetMinigames()
     {

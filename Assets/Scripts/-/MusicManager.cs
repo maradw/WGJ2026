@@ -11,6 +11,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource _buttonSound;
     public static MusicManager Instance;
     [SerializeField] private AudioSource audioSource;
+    private AudioSource sfxSource;
     public MusicData CurrentMusic { get; private set; }
     private void Awake()
     {
@@ -22,6 +23,19 @@ public class MusicManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Fuente para efectos de sonido, por el canal SFX del mezclador.
+        sfxSource = gameObject.AddComponent<AudioSource>();
+        sfxSource.playOnAwake = false;
+        AudioMixerGroup[] sfxGroups = _audioGameMixer.FindMatchingGroups("SFX");
+        if (sfxGroups.Length > 0)
+            sfxSource.outputAudioMixerGroup = sfxGroups[0];
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        if (clip != null)
+            sfxSource.PlayOneShot(clip);
     }
     private void Start()
     {
@@ -48,6 +62,11 @@ public class MusicManager : MonoBehaviour
     }
     public void PlayBG(MusicData musicData)
     {
+        if (musicData == null || CurrentMusic == musicData)
+            return;
+
+        // Corta cualquier fundido en curso para que no apague la música nueva.
+        StopAllCoroutines();
         StartCoroutine(PlayBGCoroutine(musicData));
     }
 
@@ -71,6 +90,9 @@ public class MusicManager : MonoBehaviour
 
     public void StopFade(float duration)
     {
+        StopAllCoroutines();
+        // Ya no suena nada: la próxima PlayBG debe reproducir aunque sea la misma música.
+        CurrentMusic = null;
         StartCoroutine(FadeOutCoroutine(duration));
        
         

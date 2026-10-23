@@ -54,7 +54,7 @@ public class VisualNovelManager : MonoBehaviour
         }
 
         history.Add(story.startNode);
-        ShowNode();
+        ShowNodeAndPlayAudio();
     }
 
     private void OnEnable()
@@ -104,7 +104,7 @@ public class VisualNovelManager : MonoBehaviour
         currentIndex = history.Count - 1;
         currentLineIndex = 0;
 
-        ShowNode();
+        ShowNodeAndPlayAudio();
     }
 
     public void NextDialogue()
@@ -118,7 +118,7 @@ public class VisualNovelManager : MonoBehaviour
         if (currentLineIndex < currentNode.dialogueLines.Count - 1)
         {
             currentLineIndex++;
-            ShowNode();
+            ShowNodeAndPlayAudio();
             return;
         }
 
@@ -127,7 +127,7 @@ public class VisualNovelManager : MonoBehaviour
         {
             currentIndex++;
             currentLineIndex = 0;
-            ShowNode();
+            ShowNodeAndPlayAudio();
             return;
         }
 
@@ -147,7 +147,7 @@ public class VisualNovelManager : MonoBehaviour
                     history.Add(choice.nextNode);
                     currentIndex = history.Count - 1;
                     currentLineIndex = 0;
-                    ShowNode();
+                    ShowNodeAndPlayAudio();
                 }
             }
 
@@ -159,7 +159,7 @@ public class VisualNovelManager : MonoBehaviour
             history.Add(currentNode.nextNode);
             currentIndex = history.Count - 1;
             currentLineIndex = 0;
-            ShowNode();
+            ShowNodeAndPlayAudio();
             return;
         }
 
@@ -257,7 +257,7 @@ public class VisualNovelManager : MonoBehaviour
                 history.Add(choice.nextNode);
                 currentIndex = history.Count - 1;
                 currentLineIndex = 0;
-                ShowNode();
+                ShowNodeAndPlayAudio();
                 break;
         }
     }
@@ -384,6 +384,23 @@ public class VisualNovelManager : MonoBehaviour
             (node.choices.Count > 0 && canFollowSavedChoice);
     }
 
+    // Muestra el nodo y reproduce su audio; se usa solo al avanzar, no al retroceder.
+    private void ShowNodeAndPlayAudio()
+    {
+        ShowNode();
+
+        if (MusicManager.Instance == null || history.Count == 0)
+            return;
+
+        DialogueNode node = history[currentIndex];
+
+        if (currentLineIndex == 0 && node.music != null)
+            MusicManager.Instance.PlayBG(node.music);
+
+        if (currentLineIndex < node.lineSfx.Count)
+            MusicManager.Instance.PlaySFX(node.lineSfx[currentLineIndex]);
+    }
+
     // Las opciones de un nodo con choiceTime esperan a que se pulse Siguiente.
     private bool WaitsToRevealChoices(DialogueNode node)
     {
@@ -420,6 +437,6 @@ public class VisualNovelManager : MonoBehaviour
         if (GameProgressManager.Instance != null)
             GameProgressManager.Instance.ResetLives();
 
-        ShowNode();
+        ShowNodeAndPlayAudio();
     }
 }

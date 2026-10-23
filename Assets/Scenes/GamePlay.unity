@@ -6859,6 +6859,11 @@ MonoBehaviour:
   DialogueFold: {fileID: 1194296956}
   miniGamePanel: {fileID: 1177848051}
   mazeText: {fileID: 1299415827}
+  mazeMusic: {fileID: 11400000, guid: 4443d685019e1104fbc74f9b1896c5a3, type: 2}
+  codeMusic: {fileID: 11400000, guid: e7fb72f15ba62f741a36810bc9f33a47, type: 2}
+  typingMusic: {fileID: 11400000, guid: 5bfdffca1a734c444ab6f219865f7489, type: 2}
+  typingSfx: {fileID: 8300000, guid: 322d6109897416946a1a3471109d4cae, type: 3}
+  successSfx: {fileID: 8300000, guid: b3cc65bee7bff034ca76bfa08f07d9b6, type: 3}
 --- !u!4 &1494749434
 Transform:
   m_ObjectHideFlags: 0

@@ -18,5 +18,10 @@ MonoBehaviour:
   - "Uff justo a tiempo, al menos no me descontar\xE1n hoy"
   changeTime: 1
   storyTime: 8:00 AM
+  lineTimes: []
+  choiceTime: 
+  music: {fileID: 0}
+  lineSfx:
+  - {fileID: 8300000, guid: bbee2f34acfbe264ca6359e40cb77baf, type: 3}
   nextNode: {fileID: 11400000, guid: f98ac35cfadad4949aab7a9332205c25, type: 2}
   choices: []
