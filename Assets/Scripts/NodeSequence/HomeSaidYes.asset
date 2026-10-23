@@ -15,9 +15,11 @@ MonoBehaviour:
   character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
   background: {fileID: 11400000, guid: 5fd90a0a667c16d469687197f42d7539, type: 2}
   dialogueLines:
-  - "Al fin en casa... Son las 10:00 PM y no me quedan fuerzas ni para cenar"
+  - Al fin en casa... Son las 10:00 PM y no me quedan fuerzas ni para cenar
   - "Genial, olvid\xE9 darle la comida al gato..."
-  changeTime: 0
-  storyTime: 
+  changeTime: 1
+  storyTime: 10:00 PM
+  lineTimes: []
+  choiceTime: 
   nextNode: {fileID: 0}
   choices: []
