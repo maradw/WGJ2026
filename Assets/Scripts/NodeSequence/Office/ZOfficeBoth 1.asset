@@ -16,7 +16,9 @@ MonoBehaviour:
   background: {fileID: 11400000, guid: 620e9e3c592b1e7418bf5881775cdcee, type: 2}
   dialogueLines:
   - Ya casi termino todo ... y falta poco para irme ...
-  changeTime: 0
-  storyTime: 
+  changeTime: 1
+  storyTime: 5:58 PM
+  lineTimes: []
+  choiceTime: 
   nextNode: {fileID: 11400000, guid: 932d3de74b7e6554c8187d0ded744cd2, type: 2}
   choices: []

@@ -15,8 +15,10 @@ MonoBehaviour:
   character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
   background: {fileID: 11400000, guid: 92d44e003382e064f82965067dd49126, type: 2}
   dialogueLines:
-  - "Genial (sarc\xE1sticamente) Debo correr a la estaci\xF3n"
+  - "Genial (sarc\xE1sticamente) Ahora debo correr a la estaci\xF3n"
   changeTime: 1
   storyTime: 7:30 AM
-  nextNode: {fileID: 11400000, guid: 891eba52f772cc14cbcd0e312d1ea853, type: 2}
+  lineTimes: []
+  choiceTime: 
+  nextNode: {fileID: 11400000, guid: 3b1c3be9f78b98442a6d601aeff7ee8d, type: 2}
   choices: []

@@ -16,7 +16,9 @@ MonoBehaviour:
   background: {fileID: 0}
   dialogueLines:
   - "Correo enviado con \xE9xito! Ya puedes ir a casa "
-  changeTime: 0
-  storyTime: 
+  changeTime: 1
+  storyTime: 9:00 PM
+  lineTimes: []
+  choiceTime: 
   nextNode: {fileID: 11400000, guid: 08a45d03d56921f468ee8e459a5724f2, type: 2}
   choices: []

@@ -16,7 +16,9 @@ MonoBehaviour:
   background: {fileID: 11400000, guid: effbf8512d127134ea8ef3faedfd39fa, type: 2}
   dialogueLines:
   - "Espero que a\xFAn no haya pasado mi tren"
-  changeTime: 0
-  storyTime: 
+  changeTime: 1
+  storyTime: 7:35 AM
+  lineTimes: []
+  choiceTime: 
   nextNode: {fileID: 11400000, guid: 891eba52f772cc14cbcd0e312d1ea853, type: 2}
   choices: []

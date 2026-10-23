@@ -21,5 +21,10 @@ MonoBehaviour:
   - "\u201CDice que sin eso no puede presentar su tr\xE1mite hoy\u201D"
   changeTime: 0
   storyTime: 
+  lineTimes:
+  - 7:38 AM
+  - 7:38 AM
+  - 7:39 AM
+  choiceTime: 
   nextNode: {fileID: 11400000, guid: 1476e81b3de04d04e8e0040272f89d54, type: 2}
   choices: []

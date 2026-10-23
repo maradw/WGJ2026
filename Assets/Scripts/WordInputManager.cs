@@ -13,6 +13,17 @@ public class WordInputManager : MonoBehaviour
     [Header("Feedback")]
     [SerializeField] private TMP_Text feedbackText;
     [SerializeField] private MiniGameManager miniGameManager;
+
+    [Header("Pista")]
+    [SerializeField] private int failsBeforeHint = 2;
+    private int fails;
+
+    private void OnEnable()
+    {
+        fails = 0;
+        if (feedbackText != null)
+            feedbackText.text = "";
+    }
     private void Start()
     {
         for (int i = 0; i < inputFields.Length; i++)
@@ -74,7 +85,11 @@ public class WordInputManager : MonoBehaviour
         }
         else
         {
-            feedbackText.text = "Incorrect!";
+            fails++;
+            // Tras varios fallos se muestra la contraseña para ayudar al jugador.
+            feedbackText.text = fails >= failsBeforeHint
+                ? "La contraseña es: " + correctWord
+                : "Incorrect!";
             GameProgressManager.Instance.LoseLife();
             Debug.Log("Incorrect answer!");
         }

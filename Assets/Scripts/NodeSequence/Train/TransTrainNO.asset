@@ -16,7 +16,7 @@ MonoBehaviour:
   background: {fileID: 11400000, guid: effbf8512d127134ea8ef3faedfd39fa, type: 2}
   dialogueLines:
   - "Felizmente no saque la basura, llegu\xE9 a tiempo"
-  changeTime: 0
-  storyTime: 
+  changeTime: 1
+  storyTime: 7:30 AM
   nextNode: {fileID: 11400000, guid: 891eba52f772cc14cbcd0e312d1ea853, type: 2}
   choices: []

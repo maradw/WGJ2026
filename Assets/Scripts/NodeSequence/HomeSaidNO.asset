@@ -17,7 +17,7 @@ MonoBehaviour:
   dialogueLines:
   - "Llegu\xE9 a tiempo a casa para descansar"
   - "Dije que no y el mundo no se acab\xF3"
-  changeTime: 0
-  storyTime: 
+  changeTime: 1
+  storyTime: 7:00 PM
   nextNode: {fileID: 0}
   choices: []

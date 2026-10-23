@@ -16,7 +16,7 @@ MonoBehaviour:
   background: {fileID: 11400000, guid: dfc84d6858b96a64fa5fd7195c287a30, type: 2}
   dialogueLines:
   - "Uff justo a tiempo, al menos no me descontar\xE1n hoy"
-  changeTime: 0
-  storyTime: 
+  changeTime: 1
+  storyTime: 8:00 AM
   nextNode: {fileID: 11400000, guid: f98ac35cfadad4949aab7a9332205c25, type: 2}
   choices: []
