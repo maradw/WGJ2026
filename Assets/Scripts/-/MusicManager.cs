@@ -11,7 +11,11 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource _buttonSound;
     public static MusicManager Instance;
     [SerializeField] private AudioSource audioSource;
+    // Dos fuentes de efectos: mientras una se apaga con un fundido, la otra puede sonar.
     private AudioSource sfxSource;
+    private AudioSource fadingSfxSource;
+    private Coroutine musicRoutine;
+    private Coroutine sfxFadeRoutine;
     public MusicData CurrentMusic { get; private set; }
     private void Awake()
     {
@@ -24,18 +28,55 @@ public class MusicManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // Fuente para efectos de sonido, por el canal SFX del mezclador.
-        sfxSource = gameObject.AddComponent<AudioSource>();
-        sfxSource.playOnAwake = false;
+        sfxSource = CreateSfxSource();
+        fadingSfxSource = CreateSfxSource();
+    }
+
+    // Fuente para efectos de sonido, por el canal SFX del mezclador.
+    private AudioSource CreateSfxSource()
+    {
+        AudioSource source = gameObject.AddComponent<AudioSource>();
+        source.playOnAwake = false;
         AudioMixerGroup[] sfxGroups = _audioGameMixer.FindMatchingGroups("SFX");
         if (sfxGroups.Length > 0)
-            sfxSource.outputAudioMixerGroup = sfxGroups[0];
+            source.outputAudioMixerGroup = sfxGroups[0];
+        return source;
     }
 
     public void PlaySFX(AudioClip clip)
     {
         if (clip != null)
             sfxSource.PlayOneShot(clip);
+    }
+
+    // Apaga con un fundido los efectos que siguen sonando (p. ej. al cambiar de lugar).
+    // Los efectos que se lancen después suenan normalmente por la otra fuente.
+    public void FadeOutSFX(float duration)
+    {
+        if (sfxFadeRoutine != null)
+        {
+            StopCoroutine(sfxFadeRoutine);
+            fadingSfxSource.Stop();
+        }
+
+        AudioSource fading = sfxSource;
+        sfxSource = fadingSfxSource;
+        sfxSource.volume = 1f;
+        fadingSfxSource = fading;
+        sfxFadeRoutine = StartCoroutine(FadeOutSfxCoroutine(fading, duration));
+    }
+
+    private IEnumerator FadeOutSfxCoroutine(AudioSource source, float duration)
+    {
+        float startVolume = source.volume;
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            source.volume = Mathf.Lerp(startVolume, 0f, t / duration);
+            yield return null;
+        }
+        source.Stop();
+        source.volume = 1f;
+        sfxFadeRoutine = null;
     }
     private void Start()
     {
@@ -65,9 +106,10 @@ public class MusicManager : MonoBehaviour
         if (musicData == null || CurrentMusic == musicData)
             return;
 
-        // Corta cualquier fundido en curso para que no apague la música nueva.
-        StopAllCoroutines();
-        StartCoroutine(PlayBGCoroutine(musicData));
+        // Corta cualquier fundido de música en curso para que no apague la música nueva.
+        if (musicRoutine != null)
+            StopCoroutine(musicRoutine);
+        musicRoutine = StartCoroutine(PlayBGCoroutine(musicData));
     }
 
     private IEnumerator PlayBGCoroutine(MusicData musicData)
@@ -78,7 +120,7 @@ public class MusicManager : MonoBehaviour
         if (audioSource.isPlaying)
         {
             // Fundido corto para que la música nueva entre casi al instante.
-            yield return StartCoroutine(FadeOutCoroutine(0.3f));
+            yield return FadeOutCoroutine(0.3f);
         }
 
         CurrentMusic = musicData;
@@ -92,10 +134,11 @@ public class MusicManager : MonoBehaviour
 
     public void StopFade(float duration)
     {
-        StopAllCoroutines();
+        if (musicRoutine != null)
+            StopCoroutine(musicRoutine);
         // Ya no suena nada: la próxima PlayBG debe reproducir aunque sea la misma música.
         CurrentMusic = null;
-        StartCoroutine(FadeOutCoroutine(duration));
+        musicRoutine = StartCoroutine(FadeOutCoroutine(duration));
        
         
         //audioSource.volume = 1f;

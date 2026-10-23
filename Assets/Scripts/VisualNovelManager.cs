@@ -42,6 +42,9 @@ public class VisualNovelManager : MonoBehaviour
     // Nodos con choiceTime cuyas opciones ya se mostraron.
     private HashSet<DialogueNode> revealedChoices = new HashSet<DialogueNode>();
 
+    // Fondo (lugar) del último audio reproducido.
+    private BackgroundData audioBackground;
+
     private bool storyFinished;
 
 
@@ -393,6 +396,14 @@ public class VisualNovelManager : MonoBehaviour
             return;
 
         DialogueNode node = history[currentIndex];
+
+        // Al cambiar de lugar, los efectos del lugar anterior se apagan.
+        if (node.background != null && node.background != audioBackground)
+        {
+            if (audioBackground != null)
+                MusicManager.Instance.FadeOutSFX(0.5f);
+            audioBackground = node.background;
+        }
 
         if (currentLineIndex == 0 && node.music != null)
             MusicManager.Instance.PlayBG(node.music);

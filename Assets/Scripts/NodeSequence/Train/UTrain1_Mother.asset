@@ -29,5 +29,7 @@ MonoBehaviour:
   music: {fileID: 0}
   lineSfx:
   - {fileID: 8300000, guid: 340990a1e5ccad34583859e16c952ecb, type: 3}
+  - {fileID: 8300000, guid: 340990a1e5ccad34583859e16c952ecb, type: 3}
+  - {fileID: 8300000, guid: 340990a1e5ccad34583859e16c952ecb, type: 3}
   nextNode: {fileID: 11400000, guid: 1476e81b3de04d04e8e0040272f89d54, type: 2}
   choices: []
