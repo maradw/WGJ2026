@@ -23,6 +23,6 @@ MonoBehaviour:
   choiceTime: 
   music: {fileID: 11400000, guid: 1d0f336207467c044a25334cead879f1, type: 2}
   lineSfx:
-  - {fileID: 8300000, guid: 3677dd42d081b2747b41fa7054c5e515, type: 3}
+  - {fileID: 8300000, guid: fe51f041f0867904e90d869be2168a38, type: 3}
   nextNode: {fileID: 11400000, guid: f020e9c2e8115624b91153a5561827f0, type: 2}
   choices: []

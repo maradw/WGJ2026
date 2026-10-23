@@ -77,7 +77,8 @@ public class MusicManager : MonoBehaviour
 
         if (audioSource.isPlaying)
         {
-            yield return StartCoroutine(FadeOutCoroutine(1f));
+            // Fundido corto para que la música nueva entre casi al instante.
+            yield return StartCoroutine(FadeOutCoroutine(0.3f));
         }
 
         CurrentMusic = musicData;
@@ -85,6 +86,7 @@ public class MusicManager : MonoBehaviour
         audioSource.clip = musicData.Clip;
         audioSource.loop = true;
         audioSource.volume = 1f;
+        audioSource.time = Mathf.Min(musicData.StartTime, musicData.Clip.length - 0.01f);
         audioSource.Play();
     }
 

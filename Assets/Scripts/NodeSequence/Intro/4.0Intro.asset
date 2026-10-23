@@ -21,8 +21,7 @@ MonoBehaviour:
   lineTimes: []
   choiceTime: 
   music: {fileID: 0}
-  lineSfx:
-  - {fileID: 8300000, guid: 35c8a6e7072035e42b68318dbd862473, type: 3}
+  lineSfx: []
   nextNode: {fileID: 0}
   choices:
   - choiceText: "Est\xE1 bien, igual no me tomar\xE1 mucho tiempo"

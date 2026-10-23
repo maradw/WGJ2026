@@ -15,5 +15,6 @@ MonoBehaviour:
   Clip: {fileID: 8300000, guid: 85f6d901a4c027648bc69324c9efe8b7, type: 3}
   Volume: 1
   Loop: 1
+  StartTime: 0.06954648
   FadeIn: 1
   FadeOut: 1
