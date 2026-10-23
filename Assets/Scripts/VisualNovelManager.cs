@@ -39,6 +39,9 @@ public class VisualNovelManager : MonoBehaviour
     private Dictionary<DialogueNode, DialogueChoice> savedChoices =
         new Dictionary<DialogueNode, DialogueChoice>();
 
+    // Nodos con choiceTime cuyas opciones ya se mostraron.
+    private HashSet<DialogueNode> revealedChoices = new HashSet<DialogueNode>();
+
     private bool storyFinished;
 
 
@@ -130,6 +133,13 @@ public class VisualNovelManager : MonoBehaviour
 
         if (currentNode.choices.Count > 0)
         {
+            if (WaitsToRevealChoices(currentNode))
+            {
+                revealedChoices.Add(currentNode);
+                ShowNode();
+                return;
+            }
+
             if (savedChoices.TryGetValue(currentNode, out DialogueChoice choice))
             {
                 if (choice.nextNode != null)
@@ -223,6 +233,9 @@ public class VisualNovelManager : MonoBehaviour
 
         savedChoices[currentNode] = choice;
 
+        if (!string.IsNullOrEmpty(choice.storyTime) && storyTimeText != null)
+            storyTimeText.text = choice.storyTime;
+
         switch (choice.miniGameType)
         {
             case MiniGameType.Typing:
@@ -287,6 +300,13 @@ public class VisualNovelManager : MonoBehaviour
             storyTimeText.text = node.storyTime;
         }
 
+        if (storyTimeText != null &&
+            currentLineIndex < node.lineTimes.Count &&
+            !string.IsNullOrEmpty(node.lineTimes[currentLineIndex]))
+        {
+            storyTimeText.text = node.lineTimes[currentLineIndex];
+        }
+
 
         if (node.dialogueLines.Count > 0)
         {
@@ -315,8 +335,15 @@ public class VisualNovelManager : MonoBehaviour
 
 
         bool hasSavedChoice = savedChoices.ContainsKey(node);
+        bool waitsToReveal = WaitsToRevealChoices(node);
 
-        if (node.choices.Count > 0 && !hasSavedChoice)
+        if (!hasSavedChoice && revealedChoices.Contains(node) &&
+            storyTimeText != null)
+        {
+            storyTimeText.text = node.choiceTime;
+        }
+
+        if (node.choices.Count > 0 && !hasSavedChoice && !waitsToReveal)
         {
             for (int i = 0; i < node.choices.Count &&
                             i < choiceButtons.Count; i++)
@@ -353,7 +380,17 @@ public class VisualNovelManager : MonoBehaviour
             currentIndex < history.Count - 1 ||
             (node.choices.Count == 0 && canFollowNextNode) ||
             isEnding ||
+            waitsToReveal ||
             (node.choices.Count > 0 && canFollowSavedChoice);
+    }
+
+    // Las opciones de un nodo con choiceTime esperan a que se pulse Siguiente.
+    private bool WaitsToRevealChoices(DialogueNode node)
+    {
+        return node.choices.Count > 0 &&
+            !string.IsNullOrEmpty(node.choiceTime) &&
+            !savedChoices.ContainsKey(node) &&
+            !revealedChoices.Contains(node);
     }
 
 
@@ -372,6 +409,7 @@ public class VisualNovelManager : MonoBehaviour
         // Borrar el progreso anterior.
         history.Clear();
         savedChoices.Clear();
+        revealedChoices.Clear();
 
         currentIndex = 0;
         currentLineIndex = 0;

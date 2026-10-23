@@ -17,6 +17,7 @@ public class DialogueChoice
     public string choiceText;
     public DialogueNode nextNode;
     public MiniGameType miniGameType;
+    public string storyTime;
 }
 
 [CreateAssetMenu(
@@ -36,6 +37,10 @@ public class DialogueNode : ScriptableObject
     [Header("Narrative Time")]
     public bool changeTime;
     public string storyTime;
+    // Hora por línea de diálogo; vacío = no cambia.
+    public List<string> lineTimes = new List<string>();
+    // Si tiene valor, las opciones aparecen al pulsar Siguiente en la última línea, con esta hora.
+    public string choiceTime;
 
     [Header("Story Flow")]
     public DialogueNode nextNode;
