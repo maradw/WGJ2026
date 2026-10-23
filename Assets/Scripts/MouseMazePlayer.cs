@@ -1,5 +1,4 @@
 
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,11 +34,6 @@ public class MouseMazePlayer : MonoBehaviour
 
     [SerializeField] private MiniGameManager miniGameManager;
 
-    [Header("Cuenta regresiva")]
-    [SerializeField] private float timeLimit = 10f;
-    [SerializeField] private TMP_Text timerText;
-    private float timeLeft;
-
 
     int count = 0;
     private void ActivateMaze()
@@ -53,14 +47,6 @@ public class MouseMazePlayer : MonoBehaviour
     private void OnEnable()
     {
         ActivateMaze();
-        timeLeft = timeLimit;
-        ActualizarTimer();
-    }
-
-    private void ActualizarTimer()
-    {
-        if (timerText != null)
-            timerText.text = "Tiempo: " + Mathf.CeilToInt(timeLeft);
     }
     private void Awake()
     {
@@ -92,17 +78,6 @@ public class MouseMazePlayer : MonoBehaviour
 
     private void Update()
     {
-        // Si se acaba el tiempo: pierde una vida y vuelve a empezar con el tiempo completo.
-        timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0f)
-        {
-            timeLeft = timeLimit;
-            ReiniciarJugador();
-            if (GameProgressManager.Instance != null)
-                GameProgressManager.Instance.LoseLife();
-        }
-        ActualizarTimer();
-
         if (!started)
         {
             if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -223,23 +198,6 @@ public class MouseMazePlayer : MonoBehaviour
 
         Debug.Log("Choque con pared: " + objeto.name);
 
-        ReiniciarJugador();
-        count++;
-        print ("times hit the wall: " + count);
-        //loselife
-        if (GameProgressManager.Instance != null)
-        {
-            if(count ==3)
-            {
-                GameProgressManager.Instance.LoseLife();
-                count = 0;
-            }
-            //GameProgressManager.Instance.LoseLife();
-        }
-    }
-
-    private void ReiniciarJugador()
-    {
         bloqueado = true;
         rb.position = startPosition;
         destino = startPosition;
@@ -254,6 +212,18 @@ public class MouseMazePlayer : MonoBehaviour
         }
 
         Debug.Log("Jugador y cursor reiniciados.");
+        count++;
+        print ("times hit the wall: " + count);
+        //loselife
+        if (GameProgressManager.Instance != null)
+        {
+            if(count ==3)
+            {
+                GameProgressManager.Instance.LoseLife();
+                count = 0;
+            }
+            //GameProgressManager.Instance.LoseLife();
+        }
     }
 
     private void OnDisable()
