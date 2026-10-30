@@ -13,6 +13,10 @@ namespace Game.Audio
 
         public bool Loop = true;
 
+        // Segundo desde el que empieza a sonar, para saltar el silencio inicial del archivo.
+        [Min(0f)]
+        public float StartTime;
+
         [Header("Transitions")]
         [Min(0f)]
         public float FadeIn = 1f;

@@ -21,5 +21,9 @@ MonoBehaviour:
   storyTime: 7:45 AM
   lineTimes: []
   choiceTime: 
+  music: {fileID: 0}
+  lineSfx:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: b08a2280ba2febb41a566bbd43f367d4, type: 3}
   nextNode: {fileID: 11400000, guid: da258decf742d7b4583eb81308a9a23a, type: 2}
   choices: []

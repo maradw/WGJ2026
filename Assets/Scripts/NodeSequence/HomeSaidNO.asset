@@ -19,5 +19,9 @@ MonoBehaviour:
   - "Dije que no y el mundo no se acab\xF3"
   changeTime: 1
   storyTime: 7:00 PM
+  lineTimes: []
+  choiceTime: 
+  music: {fileID: 11400000, guid: 8aec36025ad06e846901b9eabd058fa7, type: 2}
+  lineSfx: []
   nextNode: {fileID: 0}
   choices: []

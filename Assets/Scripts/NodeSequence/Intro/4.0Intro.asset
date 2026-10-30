@@ -18,11 +18,17 @@ MonoBehaviour:
   - "uh pero yo tambi\xE9n estoy tarde. \xBFAhora que hago? ..."
   changeTime: 0
   storyTime: 
+  lineTimes: []
+  choiceTime: 
+  music: {fileID: 0}
+  lineSfx: []
   nextNode: {fileID: 0}
   choices:
   - choiceText: "Est\xE1 bien, igual no me tomar\xE1 mucho tiempo"
     nextNode: {fileID: 11400000, guid: 1c1ab462adb27ea4da913c772a67081b, type: 2}
     miniGameType: 3
+    storyTime: 
   - choiceText: No, la basura puede esperar
     nextNode: {fileID: 11400000, guid: f3188badac8f6ba40b72385c7182d5bd, type: 2}
     miniGameType: 0
+    storyTime: 
