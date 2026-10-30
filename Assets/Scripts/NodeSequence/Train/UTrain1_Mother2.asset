@@ -18,12 +18,17 @@ MonoBehaviour:
   - "\u201CPorfa prende tu compu y m\xE1ndaselo ahora mismo\u201D"
   changeTime: 0
   storyTime: 
+  lineTimes:
+  - 7:39 AM
+  choiceTime: 7:40 AM
   nextNode: {fileID: 0}
   choices:
   - choiceText: "Est\xE1 bien mam\xE1, me siento en una banca y se lo env\xEDo ahora"
     nextNode: {fileID: 11400000, guid: 58726e7adaa8ff7408acbe25c394fac9, type: 2}
     miniGameType: 2
+    storyTime: 7:41 AM
   - choiceText: "Mam\xE1, estoy por subir al bus y voy tarde al trabajo. Se lo env\xEDo
       apenas llegue."
     nextNode: {fileID: 11400000, guid: 35988d7af1d69f44bad0c83cb228b80d, type: 2}
     miniGameType: 0
+    storyTime: 

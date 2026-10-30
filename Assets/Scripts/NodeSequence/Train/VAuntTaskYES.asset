@@ -15,9 +15,11 @@ MonoBehaviour:
   character: {fileID: 11400000, guid: 5edab4dadf96a694dac9f4e33e7388df, type: 2}
   background: {fileID: 11400000, guid: effbf8512d127134ea8ef3faedfd39fa, type: 2}
   dialogueLines:
-  - "Felicidades! Ayudaste a tu t\xEDa!"
+  - "Felicidades! (Sarc\xE1sticamente) Ayudaste a tu t\xEDa ..."
   - ... Pero perdiste el tren
-  changeTime: 0
-  storyTime: 
+  changeTime: 1
+  storyTime: 7:45 AM
+  lineTimes: []
+  choiceTime: 
   nextNode: {fileID: 11400000, guid: da258decf742d7b4583eb81308a9a23a, type: 2}
   choices: []
